@@ -61,26 +61,26 @@ export const ShowSection: React.FC = () => {
         {/* Section Header */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-12 gap-6">
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#0065E1]/10 dark:bg-[#0065E1]/20 border border-[#0065E1]/30 dark:border-[#0065E1]/40 text-[#0065E1] dark:text-[#01CF11] text-xs tracking-[-0.01em] mb-3 font-semibold">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#0065E1]/10 dark:bg-[#0065E1]/20 border border-[#0065E1]/30 dark:border-[#0065E1]/40 text-[#0065E1] dark:text-[#01CF11] text-xs tracking-wide mb-3 font-semibold">
               <Radio className="w-3.5 h-3.5 text-[#0065E1] dark:text-[#01CF11]" />
               <span>EPISODE ARCHIVE</span>
               <span>/</span>
               <span>12 EPISODES</span>
             </div>
-            <h2 className="text-3xl sm:text-5xl font-medium tracking-[-0.02em] text-slate-900 dark:text-white leading-[1.15]">
+            <h2 className="text-3xl sm:text-5xl font-bold tracking-wide text-slate-900 dark:text-white leading-[1.2]">
               The Niuxverse Show
             </h2>
-            <p className="text-lg sm:text-xl font-normal text-[#0065E1] dark:text-[#01CF11] mt-1 tracking-[-0.01em]">
+            <p className="text-lg sm:text-xl font-normal text-[#0065E1] dark:text-[#01CF11] mt-1 tracking-normal">
               Futuristic Tech & Human Life
             </p>
           </div>
 
           <div className="p-4 rounded-xl border border-slate-200 bg-slate-50 dark:border-[#0065E1]/30 dark:bg-[#051b44] max-w-md shadow-sm transition-colors">
-            <div className="flex items-center gap-2 text-xs font-semibold text-[#0065E1] dark:text-[#01CF11] tracking-[-0.01em] uppercase mb-1">
+            <div className="flex items-center gap-2 text-xs font-semibold text-[#0065E1] dark:text-[#01CF11] tracking-wide uppercase mb-1">
               <User className="w-4 h-4" />
               <span>HOSTED BY NWAEZE DAVID</span>
             </div>
-            <p className="text-xs text-slate-600 dark:text-slate-200 tracking-[-0.01em]">
+            <p className="text-xs text-slate-600 dark:text-slate-200 tracking-normal">
               "The King of Intelligence" • Conversations on future technology, human connection, and creating positive impact.
             </p>
           </div>
@@ -179,7 +179,7 @@ export const ShowSection: React.FC = () => {
                   </div>
 
                   {/* Title */}
-                  <h3 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white leading-snug mb-3 group-hover:text-[#0065E1] dark:group-hover:text-[#01CF11] transition-colors">
+                  <h3 className="text-base sm:text-lg font-bold font-sans text-slate-900 dark:text-white leading-snug mb-3 tracking-wide group-hover:text-[#0065E1] dark:group-hover:text-[#01CF11] transition-colors">
                     {episode.title}
                   </h3>
 
@@ -355,7 +355,7 @@ export const ShowSection: React.FC = () => {
               </span>
             </div>
 
-            <h3 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white mb-3 leading-tight">
+            <h3 className="text-2xl sm:text-3xl font-bold font-sans text-slate-900 dark:text-white mb-3 leading-tight tracking-wide">
               {activeEpisode.title}
             </h3>
 

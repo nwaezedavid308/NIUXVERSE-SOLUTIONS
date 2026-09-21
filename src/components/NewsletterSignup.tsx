@@ -39,14 +39,14 @@ export const NewsletterSignup: React.FC = () => {
             <span className="inline-flex items-center justify-center p-1 rounded-md bg-[#0065E1]/10 text-[#0065E1] dark:bg-[#0065E1]/20 dark:text-[#01CF11]">
               <Mail className="w-3.5 h-3.5" />
             </span>
-            <span className="text-[11px] font-semibold uppercase tracking-[-0.01em] text-[#0065E1] dark:text-[#01CF11]">
+            <span className="text-[11px] font-bold uppercase tracking-wider text-[#0065E1] dark:text-[#01CF11]">
               Niuxverse Community Updates
             </span>
           </div>
-          <h4 className="text-lg sm:text-xl font-medium text-slate-900 dark:text-white tracking-[-0.02em]">
+          <h4 className="text-lg sm:text-xl font-bold font-sans text-slate-900 dark:text-white tracking-wide">
             Stay Connected
           </h4>
-          <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-200 leading-relaxed tracking-[-0.01em]">
+          <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-200 leading-relaxed tracking-normal">
             Get thoughtful updates on new AI tools, community meetups, and practical ideas delivered straight to your inbox.
           </p>
         </div>

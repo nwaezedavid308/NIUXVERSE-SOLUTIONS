@@ -26,21 +26,21 @@ export const ImpactTalksSection: React.FC<ImpactTalksSectionProps> = ({ onRsvpSe
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#0065E1]/10 dark:bg-[#0065E1]/20 border border-[#0065E1]/30 dark:border-[#0065E1]/40 text-[#0065E1] dark:text-[#01CF11] text-xs tracking-[-0.01em] mb-3 font-semibold">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#0065E1]/10 dark:bg-[#0065E1]/20 border border-[#0065E1]/30 dark:border-[#0065E1]/40 text-[#0065E1] dark:text-[#01CF11] text-xs tracking-wide mb-3 font-semibold">
               <Video className="w-3.5 h-3.5 text-[#0065E1] dark:text-[#01CF11]" />
               <span>LIVE SESSIONS</span>
               <span>/</span>
               <span>UPCOMING TALKS</span>
             </div>
-            <h2 className="text-3xl sm:text-5xl font-medium tracking-[-0.02em] text-slate-900 dark:text-white leading-[1.15]">
+            <h2 className="text-3xl sm:text-5xl font-bold tracking-wide text-slate-900 dark:text-white leading-[1.2]">
               Impact Talks & Live Meetups
             </h2>
-            <p className="text-lg sm:text-xl font-normal text-[#0065E1] dark:text-[#01CF11] mt-1 tracking-[-0.01em]">
+            <p className="text-lg sm:text-xl font-normal text-[#0065E1] dark:text-[#01CF11] mt-1 tracking-normal">
               Interactive Community Calls on Google Meet
             </p>
           </div>
 
-          <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 dark:bg-[#051b44] dark:border-[#0065E1]/30 text-xs text-slate-600 dark:text-slate-200 max-w-sm shadow-sm transition-colors tracking-[-0.01em]">
+          <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 dark:bg-[#051b44] dark:border-[#0065E1]/30 text-xs text-slate-600 dark:text-slate-200 max-w-sm shadow-sm transition-colors tracking-normal">
             <span className="text-[#0065E1] dark:text-[#01CF11] font-semibold block mb-1">SMALL GROUP CALLS:</span>
             Seats are limited so everyone can ask questions and join the conversation directly.
           </div>
@@ -73,7 +73,7 @@ export const ImpactTalksSection: React.FC<ImpactTalksSectionProps> = ({ onRsvpSe
                     )}
                   </div>
 
-                  <h3 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white mb-3 group-hover:text-[#0065E1] dark:group-hover:text-[#01CF11] transition-colors leading-snug">
+                  <h3 className="text-base sm:text-lg font-bold font-sans text-slate-900 dark:text-white mb-3 tracking-wide group-hover:text-[#0065E1] dark:group-hover:text-[#01CF11] transition-colors leading-snug">
                     {talk.topic}
                   </h3>
 

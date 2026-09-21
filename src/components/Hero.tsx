@@ -20,24 +20,24 @@ export const Hero: React.FC<HeroProps> = ({ onExploreShow, onOpenCommunity }) =>
           <div className="lg:col-span-7 space-y-6 text-center sm:text-left">
             <div>
               {/* Community Label */}
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#0065E1]/10 dark:bg-[#0065E1]/20 border border-[#0065E1]/25 text-[#0065E1] dark:text-[#01CF11] text-xs font-semibold tracking-[-0.01em] mb-4">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#0065E1]/10 dark:bg-[#0065E1]/20 border border-[#0065E1]/25 text-[#0065E1] dark:text-[#01CF11] text-xs font-semibold tracking-wide mb-4">
                 <span className="w-2 h-2 rounded-full bg-[#01CF11]" />
                 <span>Changemakers • Thinkers • Builders</span>
               </div>
 
-              <h1 className="text-4xl sm:text-6xl lg:text-[64px] font-medium tracking-[-0.02em] text-slate-900 dark:text-white leading-[1.12]">
+              <h1 className="text-4xl sm:text-6xl lg:text-[64px] font-medium tracking-normal sm:tracking-[0.015em] text-slate-900 dark:text-white leading-[1.15]">
                 Welcome to <br />
                 <span className="text-[#0065E1] dark:text-[#01CF11]">
                   The Niuxverse
                 </span>
               </h1>
 
-              <p className="text-lg sm:text-xl font-normal text-slate-800 dark:text-slate-200 mt-4 leading-snug tracking-[-0.01em]">
+              <p className="text-lg sm:text-xl font-normal text-slate-800 dark:text-slate-200 mt-4 leading-snug tracking-normal">
                 A community of changemakers, thinkers, and builders who leverage the power of technology to solve problems and impact lives.
               </p>
             </div>
 
-            <p className="text-base font-normal text-slate-600 dark:text-slate-200 max-w-xl leading-relaxed tracking-[-0.01em]">
+            <p className="text-base font-normal text-slate-600 dark:text-slate-200 max-w-xl leading-relaxed tracking-normal">
               Technology is changing the world quickly, but real progress happens when we use it to help people. The Niuxverse is a welcoming space for anyone who wants to understand futuristic technology, protect human connection, and build practical solutions that make a real difference.
             </p>
 
@@ -47,7 +47,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreShow, onOpenCommunity }) =>
                 href="#the-show"
                 onClick={onExploreShow}
                 id="hero-explore-show-btn"
-                className="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-[#0065E1] hover:bg-[#0055c0] text-white font-semibold text-sm tracking-[-0.01em] shadow-md shadow-[#0065E1]/25 transition-all duration-150 flex items-center justify-center gap-2"
+                className="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-[#0065E1] hover:bg-[#0055c0] text-white font-semibold text-sm tracking-wide shadow-md shadow-[#0065E1]/25 transition-all duration-150 flex items-center justify-center gap-2"
               >
                 <Radio className="w-4 h-4" />
                 <span>Explore the Show</span>
@@ -59,7 +59,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreShow, onOpenCommunity }) =>
                 href="https://chat.whatsapp.com/CXzl5uB7Jz23AFsAYkwUFE?s=cl&p=a&mlu=4&ilr=4"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-[#01CF11] hover:bg-[#01b80f] text-[#02102e] font-semibold text-sm tracking-[-0.01em] shadow-md shadow-[#01CF11]/20 transition-all duration-150 flex items-center justify-center gap-2"
+                className="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-[#01CF11] hover:bg-[#01b80f] text-[#02102e] font-semibold text-sm tracking-wide shadow-md shadow-[#01CF11]/20 transition-all duration-150 flex items-center justify-center gap-2"
               >
                 <Users className="w-4 h-4" />
                 <span>Join the Community</span>
@@ -68,10 +68,10 @@ export const Hero: React.FC<HeroProps> = ({ onExploreShow, onOpenCommunity }) =>
 
             {/* Founder Note */}
             <div className="p-4 rounded-xl border border-slate-200 bg-white/80 shadow-sm dark:border-[#0065E1]/30 dark:bg-[#051b44]/80 text-xs text-slate-600 dark:text-slate-200 leading-relaxed max-w-xl">
-              <span className="font-semibold text-slate-900 dark:text-white block mb-1 tracking-[-0.01em]">
+              <span className="font-semibold text-slate-900 dark:text-white block mb-1 tracking-wide">
                 A Message from Nwaeze David:
               </span>
-              <p className="font-serif italic text-sm text-slate-800 dark:text-slate-200 mt-1 leading-snug">
+              <p className="font-serif italic text-sm text-slate-800 dark:text-slate-200 mt-1 leading-snug tracking-normal">
                 “We explore new technology not to replace human life, but to understand how it affects us, keep our friendships and communities strong, and build things that genuinely help people thrive.”
               </p>
             </div>
@@ -84,7 +84,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreShow, onOpenCommunity }) =>
                 <span className="text-[11px] font-bold uppercase tracking-wider text-[#0065E1] dark:text-[#01CF11] block">
                   What We Do Together
                 </span>
-                <h3 className="text-lg font-bold text-slate-900 dark:text-white mt-1">
+                <h3 className="text-lg font-bold font-sans text-slate-900 dark:text-white mt-1 tracking-wide">
                   How The Niuxverse Works
                 </h3>
               </div>
@@ -95,10 +95,10 @@ export const Hero: React.FC<HeroProps> = ({ onExploreShow, onOpenCommunity }) =>
                   <Radio className="w-4 h-4" />
                 </div>
                 <div>
-                  <h4 className="text-sm font-bold text-slate-900 dark:text-white">
+                  <h4 className="text-sm font-bold font-sans text-slate-900 dark:text-white tracking-wide">
                     The Niuxverse Show
                   </h4>
-                  <p className="text-xs text-slate-600 dark:text-slate-200 mt-0.5 leading-relaxed">
+                  <p className="text-xs text-slate-600 dark:text-slate-200 mt-0.5 leading-relaxed tracking-normal">
                     Thoughtful episodes and discussions about artificial intelligence, human emotion, and where technology is taking society.
                   </p>
                 </div>
@@ -110,10 +110,10 @@ export const Hero: React.FC<HeroProps> = ({ onExploreShow, onOpenCommunity }) =>
                   <BookOpen className="w-4 h-4" />
                 </div>
                 <div>
-                  <h4 className="text-sm font-bold text-slate-900 dark:text-white">
+                  <h4 className="text-sm font-bold font-sans text-slate-900 dark:text-white tracking-wide">
                     Practical Learning Tracks
                   </h4>
-                  <p className="text-xs text-slate-600 dark:text-slate-200 mt-0.5 leading-relaxed">
+                  <p className="text-xs text-slate-600 dark:text-slate-200 mt-0.5 leading-relaxed tracking-normal">
                     Step-by-step tracks in Graphics Design & Brand Strategy and Product Design to build real products.
                   </p>
                 </div>
@@ -125,10 +125,10 @@ export const Hero: React.FC<HeroProps> = ({ onExploreShow, onOpenCommunity }) =>
                   <Video className="w-4 h-4" />
                 </div>
                 <div>
-                  <h4 className="text-sm font-bold text-slate-900 dark:text-white">
+                  <h4 className="text-sm font-bold font-sans text-slate-900 dark:text-white tracking-wide">
                     Live Community Meetups
                   </h4>
-                  <p className="text-xs text-slate-600 dark:text-slate-200 mt-0.5 leading-relaxed">
+                  <p className="text-xs text-slate-600 dark:text-slate-200 mt-0.5 leading-relaxed tracking-normal">
                     Small, open video sessions on Google Meet where members share ideas, get feedback on projects, and support one another.
                   </p>
                 </div>

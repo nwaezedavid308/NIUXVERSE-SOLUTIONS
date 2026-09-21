@@ -28,22 +28,22 @@ export const FounderSection: React.FC<FounderSectionProps> = ({
               </div>
 
               <div className="space-y-1.5 mb-6">
-                <span className="text-[11px] text-[#0065E1] dark:text-[#01CF11] font-semibold tracking-[-0.01em] uppercase block">
+                <span className="text-[11px] text-[#0065E1] dark:text-[#01CF11] font-semibold tracking-wide uppercase block">
                   FOUNDER & ARCHITECT
                 </span>
-                <h3 className="text-2xl sm:text-3xl font-medium text-slate-900 dark:text-white tracking-[-0.02em]">
+                <h3 className="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white tracking-wide">
                   Nwaeze David
                 </h3>
-                <p className="text-base font-semibold text-[#01CF11] tracking-[-0.01em]">
+                <p className="text-base font-semibold text-[#01CF11] tracking-wide">
                   "The King of Intelligence"
                 </p>
-                <p className="text-xs text-slate-500 dark:text-neutral-300 tracking-[-0.01em]">
+                <p className="text-xs text-slate-500 dark:text-neutral-300 tracking-normal">
                   Founder, Niuxverse Academy
                 </p>
               </div>
 
               {/* Founder quote chip */}
-              <div className="pt-2 font-serif italic text-sm text-slate-700 dark:text-slate-200 leading-relaxed">
+              <div className="pt-2 font-serif italic text-sm text-slate-700 dark:text-slate-200 leading-relaxed tracking-normal">
                 “Technology gives us scale, but real emotions, empathy, and social connection give us meaning.”
               </div>
             </div>
@@ -51,22 +51,22 @@ export const FounderSection: React.FC<FounderSectionProps> = ({
 
           {/* Right Column: Narrative & The Algo-Rythm */}
           <div className="lg:col-span-7">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#0065E1]/10 dark:bg-[#0065E1]/20 border border-[#0065E1]/30 dark:border-[#0065E1]/40 text-[#0065E1] dark:text-[#01CF11] text-xs tracking-[-0.01em] mb-3 font-semibold">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#0065E1]/10 dark:bg-[#0065E1]/20 border border-[#0065E1]/30 dark:border-[#0065E1]/40 text-[#0065E1] dark:text-[#01CF11] text-xs tracking-wide mb-3 font-semibold">
               <Compass className="w-3.5 h-3.5 text-[#0065E1] dark:text-[#01CF11]" />
               <span>THE VISION</span>
               <span>/</span>
               <span>NIUXVERSE</span>
             </div>
 
-            <h2 className="text-3xl sm:text-5xl font-medium tracking-[-0.02em] text-slate-900 dark:text-white mb-2 leading-[1.15]">
+            <h2 className="text-3xl sm:text-5xl font-bold tracking-wide text-slate-900 dark:text-white mb-2 leading-[1.2]">
               Why "The King of Intelligence"?
             </h2>
 
-            <p className="text-lg sm:text-xl font-normal text-[#0065E1] dark:text-[#01CF11] mb-6 tracking-[-0.01em]">
+            <p className="text-lg sm:text-xl font-normal text-[#0065E1] dark:text-[#01CF11] mb-6 tracking-normal">
               Futuristic Technology & Human Connection
             </p>
 
-            <div className="space-y-4 text-sm text-slate-600 dark:text-slate-200 leading-relaxed mb-6 tracking-[-0.01em]">
+            <div className="space-y-4 text-sm text-slate-600 dark:text-slate-200 leading-relaxed mb-6 tracking-normal">
               <p>
                 The Niuxverse is a community of changemakers, thinkers, and builders who leverage the power of technology to solve problems and impact lives. It's about understanding how new tools shape our lives, jobs, emotions, friendships e.t.c and how we can use them to help people. Building solutions that impacts lives.
               </p>

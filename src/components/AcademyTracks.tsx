@@ -25,21 +25,21 @@ export const AcademyTracks: React.FC<AcademyTracksProps> = ({ onEnroll }) => {
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#0065E1]/10 dark:bg-[#0065E1]/20 border border-[#0065E1]/30 dark:border-[#0065E1]/40 text-[#0065E1] dark:text-[#01CF11] text-xs tracking-[-0.01em] mb-3 font-semibold">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#0065E1]/10 dark:bg-[#0065E1]/20 border border-[#0065E1]/30 dark:border-[#0065E1]/40 text-[#0065E1] dark:text-[#01CF11] text-xs tracking-wide mb-3 font-semibold">
               <BookOpen className="w-3.5 h-3.5 text-[#0065E1] dark:text-[#01CF11]" />
               <span>NIUXVERSE ACADEMY</span>
               <span>/</span>
               <span>LEARNING TRACKS</span>
             </div>
-            <h2 className="text-3xl sm:text-5xl font-medium tracking-[-0.02em] text-slate-900 dark:text-white leading-[1.15]">
+            <h2 className="text-3xl sm:text-5xl font-bold tracking-wide text-slate-900 dark:text-white leading-[1.2]">
               Practical Learning Tracks
             </h2>
-            <p className="text-lg sm:text-xl font-normal text-[#0065E1] dark:text-[#01CF11] mt-1 tracking-[-0.01em]">
+            <p className="text-lg sm:text-xl font-normal text-[#0065E1] dark:text-[#01CF11] mt-1 tracking-normal">
               Hands-on tracks designed to help you understand new tools, solve real problems, and help people.
             </p>
           </div>
 
-          <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 dark:bg-[#051b44] dark:border-[#0065E1]/30 text-xs text-slate-600 dark:text-slate-200 max-w-sm shadow-sm transition-colors tracking-[-0.01em]">
+          <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 dark:bg-[#051b44] dark:border-[#0065E1]/30 text-xs text-slate-600 dark:text-slate-200 max-w-sm shadow-sm transition-colors tracking-normal">
             <span className="text-[#0065E1] dark:text-[#01CF11] font-semibold block mb-1">OUR MISSION:</span>
             "We are a community of changemakers, thinkers, and builders who leverage the power of technology to solve problems and impact lives."
           </div>
@@ -74,7 +74,7 @@ export const AcademyTracks: React.FC<AcademyTracksProps> = ({ onEnroll }) => {
                     <span>{course.duration}</span>
                   </div>
 
-                  <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mb-2.5 group-hover:text-[#0065E1] dark:group-hover:text-[#01CF11] transition-colors">
+                  <h3 className="text-xl sm:text-2xl font-bold font-sans text-slate-900 dark:text-white mb-2.5 tracking-wide group-hover:text-[#0065E1] dark:group-hover:text-[#01CF11] transition-colors">
                     {course.title}
                   </h3>
 

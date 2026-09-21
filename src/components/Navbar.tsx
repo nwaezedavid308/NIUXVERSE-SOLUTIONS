@@ -21,10 +21,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRsvp }) => {
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
         {/* Brand identity */}
         <a href="#" className="group flex flex-col justify-center">
-          <span className="font-serif font-medium text-xl sm:text-2xl tracking-[-0.02em] text-slate-900 dark:text-white group-hover:text-[#0065E1] dark:group-hover:text-[#01CF11] transition-colors leading-tight">
+          <span className="font-serif font-medium text-xl sm:text-2xl tracking-normal text-slate-900 dark:text-white group-hover:text-[#0065E1] dark:group-hover:text-[#01CF11] transition-colors leading-tight">
             The Niuxverse
           </span>
-          <span className="text-[10px] sm:text-[11px] text-[#0065E1] dark:text-[#01CF11] font-semibold tracking-[-0.01em]">
+          <span className="text-[10px] sm:text-[11px] text-[#0065E1] dark:text-[#01CF11] font-semibold tracking-wide">
             Changemakers • Thinkers • Builders
           </span>
         </a>
@@ -35,7 +35,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRsvp }) => {
             <a
               key={link.label}
               href={link.href}
-              className="text-sm font-medium text-slate-700 hover:text-[#0065E1] dark:text-slate-200 dark:hover:text-[#01CF11] transition-colors tracking-[-0.01em]"
+              className="text-sm font-medium text-slate-700 hover:text-[#0065E1] dark:text-slate-200 dark:hover:text-[#01CF11] transition-colors tracking-normal"
             >
               {link.label}
             </a>
@@ -51,7 +51,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRsvp }) => {
             href="https://chat.whatsapp.com/CXzl5uB7Jz23AFsAYkwUFE?s=cl&p=a&mlu=4&ilr=4"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-xs font-semibold px-4 py-2 rounded-xl bg-[#01CF11] hover:bg-[#01b80f] text-[#02102e] shadow-md shadow-[#01CF11]/20 transition-all duration-200 flex items-center gap-1.5 tracking-[-0.01em]"
+            className="text-xs font-semibold px-4 py-2 rounded-xl bg-[#01CF11] hover:bg-[#01b80f] text-[#02102e] shadow-md shadow-[#01CF11]/20 transition-all duration-200 flex items-center gap-1.5 tracking-wide"
           >
             <span>Join Community</span>
             <ArrowUpRight className="w-3.5 h-3.5" />

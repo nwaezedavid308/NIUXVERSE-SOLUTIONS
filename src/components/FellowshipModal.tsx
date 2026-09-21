@@ -54,7 +54,7 @@ export const FellowshipModal: React.FC<FellowshipModalProps> = ({
               <CheckCircle className="w-7 h-7" />
             </div>
 
-            <h3 className="text-2xl font-extrabold text-slate-900 dark:text-white uppercase">
+            <h3 className="text-2xl font-bold font-sans text-slate-900 dark:text-white tracking-wide">
               Request Received!
             </h3>
 
@@ -88,7 +88,7 @@ export const FellowshipModal: React.FC<FellowshipModalProps> = ({
               </span>
             </div>
 
-            <h3 className="text-2xl font-extrabold text-slate-900 dark:text-white uppercase mb-1">
+            <h3 className="text-2xl font-bold font-sans text-slate-900 dark:text-white mb-1 tracking-wide">
               Join The Niuxverse Fellowship
             </h3>
 
