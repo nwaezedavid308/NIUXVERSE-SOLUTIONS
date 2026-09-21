@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      (function() {
+        // 1. Theme initialization to prevent flash of unstyled content (FOUC)
+        try {
+          var savedTheme = localStorage.getItem('niuxverse_theme');
+          if (savedTheme === 'light') {
+            document.documentElement.classList.remove('dark');
+            document.documentElement.classList.add('light');
+          } else {
+            document.documentElement.classList.add('dark');
+            document.documentElement.classList.remove('light');
+          }
+        } catch (e) {}
+
+        // 2. Intercept and prevent uncaught TypeError if an external/injected script assigns to fetch
+        window.addEventListener('error', function(event) {
+          var msg = (event && (event.message || (event.error && event.error.message))) || '';
+          if (typeof msg === 'string' && msg.indexOf('fetch') !== -1 && msg.indexOf('only a getter') !== -1) {
+            if (event.preventDefault) event.preventDefault();
+            if (event.stopImmediatePropagation) event.stopImmediatePropagation();
+            return true;
+          }
+        }, true);
+      })();
+    </script>
+    <title>The Niuxverse - Community of Changemakers, Thinkers &amp; Builders</title>
+    <meta name="description" content="A community of changemakers, thinkers, and builders who leverage the power of technology to solve problems and impact lives." />
+    <meta property="og:title" content="The Niuxverse - Community of Changemakers, Thinkers &amp; Builders" />
+    <meta property="og:description" content="A community of changemakers, thinkers, and builders who leverage the power of technology to solve problems and impact lives." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mona+Sans:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet">
+    <link rel="preload" href="https://www.interactsoftware.com/wp-content/themes/interactsoftware-website-rebrand-2026/assets/fonts/VictorSerif-50Medium.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="https://www.interactsoftware.com/wp-content/themes/interactsoftware-website-rebrand-2026/assets/fonts/VictorSerif-55MediumItalic.woff2" as="font" type="font/woff2" crossorigin>
+  </head>
+  <body class="bg-[#f4f7fc] text-slate-800 dark:bg-[#02102e] dark:text-[#ffffff] selection:bg-[#01CF11] selection:text-[#02102e] antialiased font-sans transition-colors duration-300">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+
