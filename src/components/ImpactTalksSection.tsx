@@ -22,6 +22,13 @@ export const ImpactTalksSection: React.FC<ImpactTalksSectionProps> = ({ onRsvpSe
     }));
   };
 
+  // Bento layout: first talk is large, others are smaller
+  const bentoLayouts = [
+    'md:col-span-2 lg:col-span-2 lg:row-span-2', // What Makes Us Human - Large featured
+    'md:col-span-1 lg:col-span-1',              // Modern Tech & Human Emotion
+    'md:col-span-1 lg:col-span-1',              // Creating Real-World Impact
+  ];
+
   return (
     <section id="impact-talks" className="py-24 sm:py-32 relative overflow-hidden">
       {/* Background */}
@@ -59,10 +66,11 @@ export const ImpactTalksSection: React.FC<ImpactTalksSectionProps> = ({ onRsvpSe
           </div>
         </motion.div>
 
-        {/* Sessions Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {/* Bento Grid Layout */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 auto-rows-[minmax(280px,auto)]">
           {UPCOMING_IMPACT_TALKS.map((talk, idx) => {
             const isExpanded = !!expandedTalks[talk.id];
+            const isLarge = idx === 0;
 
             return (
               <motion.div
@@ -71,21 +79,25 @@ export const ImpactTalksSection: React.FC<ImpactTalksSectionProps> = ({ onRsvpSe
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-50px' }}
                 transition={{ duration: 0.7, delay: idx * 0.1, ease: [0.16, 1, 0.3, 1] }}
-                className="group rounded-2xl border border-slate-200 bg-white shadow-sm hover:shadow-2xl dark:border-[#0065E1]/20 dark:bg-gradient-to-b dark:from-[#051b44] dark:to-[#031336] p-6 flex flex-col justify-between hover:border-[#0065E1]/40 dark:hover:border-[#01CF11]/40 transition-all duration-500 relative overflow-hidden"
+                className={`group rounded-2xl border border-slate-200 bg-white shadow-sm hover:shadow-2xl dark:border-[#0065E1]/20 dark:bg-gradient-to-b dark:from-[#051b44] dark:to-[#031336] p-5 sm:p-6 flex flex-col justify-between hover:border-[#0065E1]/40 dark:hover:border-[#01CF11]/40 transition-all duration-500 relative overflow-hidden ${
+                  bentoLayouts[idx] || ''
+                }`}
               >
-                <div>
+                <div className={isLarge ? 'flex-1' : ''}>
                   {/* Poster Image */}
                   {talk.image && (
                     <div
                       onClick={() => setSelectedFlyer(talk.image || null)}
-                      className="relative -mx-6 -mt-6 mb-5 overflow-hidden rounded-t-2xl border-b border-slate-200 dark:border-[#0065E1]/20 bg-[#02102e] group/poster cursor-pointer"
+                      className={`relative -mx-5 sm:-mx-6 -mt-5 sm:-mt-6 mb-4 sm:mb-5 overflow-hidden rounded-t-2xl border-b border-slate-200 dark:border-[#0065E1]/20 bg-[#02102e] group/poster cursor-pointer ${
+                        isLarge ? 'h-48 sm:h-64 lg:h-72' : 'h-36 sm:h-44'
+                      }`}
                       title="Click to view full flyer"
                     >
                       <img
                         src={talk.image}
                         alt={`${talk.topic} event poster`}
                         referrerPolicy="no-referrer"
-                        className="w-full h-44 object-cover object-center group-hover/poster:scale-105 transition-transform duration-700"
+                        className="w-full h-full object-cover object-center group-hover/poster:scale-105 transition-transform duration-700"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-[#02102e]/85 via-transparent to-transparent pointer-events-none" />
                       <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between text-xs text-white">
@@ -99,7 +111,7 @@ export const ImpactTalksSection: React.FC<ImpactTalksSectionProps> = ({ onRsvpSe
                     </div>
                   )}
 
-                  <div className="flex items-center justify-between mb-4 text-xs text-slate-500 dark:text-slate-400">
+                  <div className="flex items-center justify-between mb-3 sm:mb-4 text-xs text-slate-500 dark:text-slate-400">
                     <div className="flex items-center gap-1.5 text-[#0065E1] dark:text-[#01CF11] font-bold">
                       <Calendar className="w-3.5 h-3.5" />
                       <span>{talk.date}</span>
@@ -115,7 +127,9 @@ export const ImpactTalksSection: React.FC<ImpactTalksSectionProps> = ({ onRsvpSe
                     )}
                   </div>
 
-                  <h3 className="font-display font-bold text-lg text-slate-900 dark:text-white mb-3 tracking-tight group-hover:text-[#0065E1] dark:group-hover:text-[#01CF11] transition-colors leading-snug">
+                  <h3 className={`font-display font-bold text-slate-900 dark:text-white mb-3 tracking-tight group-hover:text-[#0065E1] dark:group-hover:text-[#01CF11] transition-colors leading-snug ${
+                    isLarge ? 'text-xl sm:text-2xl' : 'text-base sm:text-lg'
+                  }`}>
                     {talk.topic}
                   </h3>
 

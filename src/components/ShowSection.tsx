@@ -1,8 +1,8 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import { motion, useScroll, useTransform, useInView } from 'motion/react';
 import { SHOW_EPISODES } from '../data/mockData';
 import { Episode } from '../types';
-import { Radio, Play, Pause, Search, User, Clock, Bookmark, ChevronDown, ChevronUp, X, ArrowUpRight, Check } from 'lucide-react';
+import { Radio, Play, Pause, Search, User, Clock, Bookmark, ChevronDown, ChevronUp, X, ArrowUpRight } from 'lucide-react';
 
 export const ShowSection: React.FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
@@ -61,6 +61,22 @@ export const ShowSection: React.FC = () => {
       [id]: !prev[id],
     }));
   };
+
+  // Bento grid layout classes for each card
+  const bentoLayouts = [
+    'md:col-span-2 lg:col-span-2 lg:row-span-2', // EP01 - Large featured
+    'md:col-span-1 lg:col-span-1',              // EP02
+    'md:col-span-1 lg:col-span-1',              // EP03
+    'md:col-span-1 lg:col-span-1',              // EP04
+    'md:col-span-1 lg:col-span-1',              // EP05
+    'md:col-span-2 lg:col-span-2',              // EP06 - Wide
+    'md:col-span-1 lg:col-span-1',              // EP07
+    'md:col-span-1 lg:col-span-1',              // EP08
+    'md:col-span-1 lg:col-span-1',              // EP09
+    'md:col-span-1 lg:col-span-1',              // EP10
+    'md:col-span-1 lg:col-span-1',              // EP11
+    'md:col-span-2 lg:col-span-2',              // EP12 - Wide
+  ];
 
   return (
     <section ref={sectionRef} id="the-show" className="py-24 sm:py-32 relative overflow-hidden">
@@ -151,12 +167,14 @@ export const ShowSection: React.FC = () => {
           </div>
         </motion.div>
 
-        {/* Episodes Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Bento Grid Layout */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 auto-rows-[minmax(280px,auto)]">
           {filteredEpisodes.map((episode, idx) => {
             const isPlaying = playingId === episode.id;
             const isSaved = !!savedEpisodes[episode.id];
             const isExpanded = !!expandedEpisodeCards[episode.id];
+            const isLarge = idx === 0;
+            const isWide = idx === 5 || idx === 11;
 
             return (
               <motion.div
@@ -165,23 +183,27 @@ export const ShowSection: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-50px' }}
                 transition={{ duration: 0.6, delay: idx * 0.05, ease: [0.16, 1, 0.3, 1] }}
-                className="group rounded-2xl border border-slate-200 bg-white shadow-sm hover:shadow-xl dark:border-[#0065E1]/20 dark:bg-gradient-to-b dark:from-[#051b44] dark:to-[#031336] p-6 flex flex-col justify-between hover:border-[#0065E1]/40 dark:hover:border-[#01CF11]/40 transition-all duration-300 relative overflow-hidden"
+                className={`group rounded-2xl border border-slate-200 bg-white shadow-sm hover:shadow-xl dark:border-[#0065E1]/20 dark:bg-gradient-to-b dark:from-[#051b44] dark:to-[#031336] p-5 sm:p-6 flex flex-col justify-between hover:border-[#0065E1]/40 dark:hover:border-[#01CF11]/40 transition-all duration-300 relative overflow-hidden ${
+                  isLarge ? 'md:col-span-2 lg:col-span-2 lg:row-span-2' : isWide ? 'md:col-span-2 lg:col-span-2' : ''
+                }`}
               >
                 {/* Visual top border */}
                 <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-[#0065E1]/30 via-[#01CF11] to-transparent group-hover:from-[#0065E1] group-hover:via-[#01CF11] transition-all" />
 
-                <div>
+                <div className={isLarge ? 'flex-1' : ''}>
                   {/* Episode Poster Thumbnail */}
                   {episode.image && (
                     <div
                       onClick={() => setActiveEpisode(episode)}
-                      className="relative -mx-6 -mt-6 mb-5 overflow-hidden rounded-t-2xl border-b border-slate-200 dark:border-[#0065E1]/20 cursor-pointer group/epimg bg-[#02102e]"
+                      className={`relative -mx-5 sm:-mx-6 -mt-5 sm:-mt-6 mb-4 sm:mb-5 overflow-hidden rounded-t-2xl border-b border-slate-200 dark:border-[#0065E1]/20 cursor-pointer group/epimg bg-[#02102e] ${
+                        isLarge ? 'h-48 sm:h-64 lg:h-72' : 'h-36 sm:h-44'
+                      }`}
                     >
                       <img
                         src={episode.image}
                         alt={`${episode.title} event poster`}
                         referrerPolicy="no-referrer"
-                        className="w-full h-44 object-cover object-center group-hover/epimg:scale-105 transition-transform duration-700"
+                        className="w-full h-full object-cover object-center group-hover/epimg:scale-105 transition-transform duration-700"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-[#02102e]/85 via-transparent to-transparent pointer-events-none" />
                       <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between text-xs text-white">
@@ -198,7 +220,7 @@ export const ShowSection: React.FC = () => {
                   )}
 
                   {/* Top metadata */}
-                  <div className="flex items-center justify-between mb-4 text-xs text-slate-500 dark:text-slate-400">
+                  <div className="flex items-center justify-between mb-3 sm:mb-4 text-xs text-slate-500 dark:text-slate-400">
                     <div className="flex items-center gap-2 flex-wrap">
                       <span className="font-bold text-[#0065E1] dark:text-[#01CF11] px-2.5 py-0.5 rounded-lg bg-[#0065E1]/10 dark:bg-[#0065E1]/20 border border-[#0065E1]/20 dark:border-[#0065E1]/30 font-display">
                         EP {episode.number}
@@ -209,10 +231,10 @@ export const ShowSection: React.FC = () => {
                         </span>
                       ) : (
                         <span className="px-2 py-0.5 rounded-lg bg-[#01CF11]/15 text-[#02102e] dark:text-[#01CF11] font-semibold border border-[#01CF11]/30 text-[10px] uppercase tracking-wider">
-                          Live · 4th Oct 2026
+                          Live
                         </span>
                       )}
-                      <span className="text-[11px] text-slate-500 dark:text-slate-400">{episode.category}</span>
+                      <span className="text-[11px] text-slate-500 dark:text-slate-400 hidden sm:inline">{episode.category}</span>
                     </div>
 
                     <div className="flex items-center gap-2">
@@ -231,18 +253,22 @@ export const ShowSection: React.FC = () => {
                   </div>
 
                   {/* Title */}
-                  <h3 className="font-display font-bold text-lg text-slate-900 dark:text-white leading-snug mb-3 tracking-tight group-hover:text-[#0065E1] dark:group-hover:text-[#01CF11] transition-colors">
+                  <h3 className={`font-display font-bold text-slate-900 dark:text-white leading-snug mb-3 tracking-tight group-hover:text-[#0065E1] dark:group-hover:text-[#01CF11] transition-colors ${
+                    isLarge ? 'text-xl sm:text-2xl' : 'text-base sm:text-lg'
+                  }`}>
                     {episode.title}
                   </h3>
 
                   {/* Hook quotation */}
-                  <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 dark:bg-[#02102e]/50 dark:border-white/5 mb-4 text-sm text-slate-600 dark:text-slate-300 italic leading-relaxed">
+                  <div className={`p-3 sm:p-3.5 rounded-xl bg-slate-50 border border-slate-200 dark:bg-[#02102e]/50 dark:border-white/5 mb-4 text-slate-600 dark:text-slate-300 italic leading-relaxed ${
+                    isLarge ? 'text-sm sm:text-base' : 'text-xs sm:text-sm'
+                  }`}>
                     "{episode.hook}"
                   </div>
 
                   {/* Speakers / Guest Section */}
                   {episode.speakers && episode.speakers.length > 0 ? (
-                    <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200 dark:bg-[#02102e]/50 dark:border-[#0065E1]/20 mb-4 space-y-2 text-xs">
+                    <div className="p-3 sm:p-3.5 rounded-xl bg-slate-50 border border-slate-200 dark:bg-[#02102e]/50 dark:border-[#0065E1]/20 mb-4 space-y-2 text-xs">
                       <div className="flex items-center justify-between">
                         <span className="text-[10px] font-bold uppercase tracking-wider text-[#0065E1] dark:text-[#01CF11]">
                           Speakers
@@ -327,7 +353,7 @@ export const ShowSection: React.FC = () => {
                       }`}
                     >
                       {isPlaying ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5 ml-0.5" />}
-                      <span>{isPlaying ? 'Playing Excerpt' : 'Preview Audio'}</span>
+                      <span>{isPlaying ? 'Playing' : 'Preview'}</span>
                     </button>
                   )}
 
@@ -336,7 +362,7 @@ export const ShowSection: React.FC = () => {
                       onClick={(e) => toggleCardExpansion(episode.id, e)}
                       className="text-xs text-[#0065E1] dark:text-[#01CF11] hover:underline flex items-center gap-1 px-2.5 py-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-white/5 transition-colors font-medium"
                     >
-                      <span>{isExpanded ? 'Hide Details' : 'View Details'}</span>
+                      <span>{isExpanded ? 'Hide' : 'Details'}</span>
                       {isExpanded ? <ChevronUp className="w-3 h-3" /> : <ChevronDown className="w-3 h-3" />}
                     </button>
 
@@ -433,12 +459,10 @@ export const ShowSection: React.FC = () => {
               {activeEpisode.title}
             </h3>
 
-            {/* Hook callout */}
             <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 dark:border-none dark:bg-gradient-to-r dark:from-[#0065E1]/20 dark:to-transparent border-l-4 border-[#01CF11] mb-6 text-sm text-slate-700 dark:text-slate-300 italic leading-relaxed">
               "{activeEpisode.hook}"
             </div>
 
-            {/* Speakers / Guest details */}
             {activeEpisode.speakers && activeEpisode.speakers.length > 0 ? (
               <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 dark:bg-[#02102e]/50 dark:border-[#0065E1]/20 mb-6 space-y-2">
                 <div className="flex items-center justify-between">
@@ -477,7 +501,6 @@ export const ShowSection: React.FC = () => {
               </div>
             ) : null}
 
-            {/* Synopsis */}
             <div className="mb-6">
               <h4 className="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-wider mb-2">
                 Episode Overview
@@ -487,7 +510,6 @@ export const ShowSection: React.FC = () => {
               </p>
             </div>
 
-            {/* Key Inquiries */}
             <div className="mb-6">
               <h4 className="text-xs font-bold text-[#0065E1] dark:text-[#01CF11] uppercase tracking-wider mb-3">
                 Key Questions
@@ -502,7 +524,6 @@ export const ShowSection: React.FC = () => {
               </ul>
             </div>
 
-            {/* Audio transmission bar */}
             <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 dark:bg-[#02102e]/80 dark:border-[#0065E1]/20 flex flex-col sm:flex-row items-center justify-between gap-4">
               <div className="flex items-center gap-3 w-full sm:w-auto">
                 <button

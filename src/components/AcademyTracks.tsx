@@ -19,6 +19,13 @@ export const AcademyTracks: React.FC<AcademyTracksProps> = ({ onEnroll }) => {
     setExpandedSyllabusId(expandedSyllabusId === id ? null : id);
   };
 
+  // Bento layout: first course is large, others are smaller
+  const bentoLayouts = [
+    'md:col-span-2 lg:col-span-2 lg:row-span-2', // What Makes Us Human - Large featured
+    'md:col-span-1 lg:col-span-1',              // Graphics Design
+    'md:col-span-1 lg:col-span-1',              // Product Design
+  ];
+
   return (
     <section id="academy" className="py-24 sm:py-32 relative overflow-hidden">
       {/* Background */}
@@ -57,10 +64,11 @@ export const AcademyTracks: React.FC<AcademyTracksProps> = ({ onEnroll }) => {
           </div>
         </motion.div>
 
-        {/* Courses Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Bento Grid Layout */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 auto-rows-[minmax(300px,auto)]">
           {ACADEMY_COURSES.map((course, idx) => {
             const isSyllabusOpen = expandedSyllabusId === course.id;
+            const isLarge = idx === 0;
 
             return (
               <motion.div
@@ -69,27 +77,31 @@ export const AcademyTracks: React.FC<AcademyTracksProps> = ({ onEnroll }) => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-50px' }}
                 transition={{ duration: 0.7, delay: idx * 0.1, ease: [0.16, 1, 0.3, 1] }}
-                className="group rounded-2xl border border-slate-200 bg-white shadow-sm hover:shadow-2xl dark:border-[#0065E1]/20 dark:bg-gradient-to-b dark:from-[#051b44] dark:to-[#031336] p-7 flex flex-col justify-between hover:border-[#0065E1]/40 dark:hover:border-[#01CF11]/40 transition-all duration-500 relative overflow-hidden"
+                className={`group rounded-2xl border border-slate-200 bg-white shadow-sm hover:shadow-2xl dark:border-[#0065E1]/20 dark:bg-gradient-to-b dark:from-[#051b44] dark:to-[#031336] p-6 sm:p-7 flex flex-col justify-between hover:border-[#0065E1]/40 dark:hover:border-[#01CF11]/40 transition-all duration-500 relative overflow-hidden ${
+                  bentoLayouts[idx] || ''
+                }`}
               >
                 {/* Highlight badge */}
                 {course.highlight && !course.image && (
-                  <div className="absolute top-0 right-0 bg-[#01CF11] text-[#02102e] text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-bl-xl shadow-md">
+                  <div className="absolute top-0 right-0 bg-[#01CF11] text-[#02102e] text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-bl-xl shadow-md z-10">
                     {course.highlight}
                   </div>
                 )}
 
-                <div>
+                <div className={isLarge ? 'flex-1' : ''}>
                   {/* Visual Poster Banner */}
                   {course.image && (
                     <div
                       onClick={() => setSelectedCourse(course)}
-                      className="relative -mx-7 -mt-7 mb-6 overflow-hidden rounded-t-2xl border-b border-slate-200 dark:border-[#0065E1]/20 cursor-pointer group/poster bg-[#02102e]"
+                      className={`relative -mx-6 sm:-mx-7 -mt-6 sm:-mt-7 mb-5 sm:mb-6 overflow-hidden rounded-t-2xl border-b border-slate-200 dark:border-[#0065E1]/20 cursor-pointer group/poster bg-[#02102e] ${
+                        isLarge ? 'h-48 sm:h-64 lg:h-80' : 'h-36 sm:h-44'
+                      }`}
                     >
                       <img
                         src={course.image}
                         alt={`${course.title} event poster`}
                         referrerPolicy="no-referrer"
-                        className="w-full h-52 object-cover object-center group-hover/poster:scale-105 transition-transform duration-700"
+                        className="w-full h-full object-cover object-center group-hover/poster:scale-105 transition-transform duration-700"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-[#02102e]/80 via-transparent to-transparent pointer-events-none" />
                       <div className="absolute top-3 right-3">
@@ -118,14 +130,16 @@ export const AcademyTracks: React.FC<AcademyTracksProps> = ({ onEnroll }) => {
                     <span className="px-2 py-0.5 rounded-lg bg-slate-100 dark:bg-white/5 text-slate-700 dark:text-slate-300 font-medium">
                       {course.level}
                     </span>
-                    <span>{course.duration}</span>
+                    <span className="hidden sm:inline">{course.duration}</span>
                   </div>
 
-                  <h3 className="font-display font-bold text-xl text-slate-900 dark:text-white mb-2.5 tracking-tight group-hover:text-[#0065E1] dark:group-hover:text-[#01CF11] transition-colors leading-snug">
+                  <h3 className={`font-display font-bold text-slate-900 dark:text-white mb-2.5 tracking-tight group-hover:text-[#0065E1] dark:group-hover:text-[#01CF11] transition-colors leading-snug ${
+                    isLarge ? 'text-xl sm:text-2xl' : 'text-lg sm:text-xl'
+                  }`}>
                     {course.title}
                   </h3>
 
-                  <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-4">
+                  <p className={`text-slate-600 dark:text-slate-300 leading-relaxed mb-4 ${isLarge ? 'text-sm sm:text-base' : 'text-sm'}`}>
                     {course.tagline}
                   </p>
 
