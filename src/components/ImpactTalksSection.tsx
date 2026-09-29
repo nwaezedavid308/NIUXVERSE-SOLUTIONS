@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { UPCOMING_IMPACT_TALKS } from '../data/mockData';
 import { ImpactSession } from '../types';
-import { Video, Calendar, Users, ArrowUpRight, ChevronDown, ChevronUp } from 'lucide-react';
+import { Video, Calendar, Users, ArrowUpRight, ChevronDown, ChevronUp, X } from 'lucide-react';
 
 interface ImpactTalksSectionProps {
   onRsvpSession: (session: ImpactSession) => void;
@@ -9,6 +9,7 @@ interface ImpactTalksSectionProps {
 
 export const ImpactTalksSection: React.FC<ImpactTalksSectionProps> = ({ onRsvpSession }) => {
   const [expandedTalks, setExpandedTalks] = useState<Record<string, boolean>>({});
+  const [selectedFlyer, setSelectedFlyer] = useState<string | null>(null);
 
   const toggleTalk = (id: string) => {
     setExpandedTalks((prev) => ({
@@ -54,9 +55,34 @@ export const ImpactTalksSection: React.FC<ImpactTalksSectionProps> = ({ onRsvpSe
             return (
               <div
                 key={talk.id}
-                className="group rounded-2xl border border-slate-200 bg-white shadow-sm hover:shadow-xl dark:border-[#0065E1]/30 dark:bg-gradient-to-b dark:from-[#051b44] dark:to-[#031336] p-6 flex flex-col justify-between hover:border-[#0065E1]/50 dark:hover:border-[#01CF11]/60 dark:hover:shadow-2xl dark:hover:shadow-[#0065E1]/25 transition-all duration-300 relative"
+                className="group rounded-2xl border border-slate-200 bg-white shadow-sm hover:shadow-xl dark:border-[#0065E1]/30 dark:bg-gradient-to-b dark:from-[#051b44] dark:to-[#031336] p-6 flex flex-col justify-between hover:border-[#0065E1]/50 dark:hover:border-[#01CF11]/60 dark:hover:shadow-2xl dark:hover:shadow-[#0065E1]/25 transition-all duration-300 relative overflow-hidden"
               >
                 <div>
+                  {/* Poster Image (if available) */}
+                  {talk.image && (
+                    <div
+                      onClick={() => setSelectedFlyer(talk.image || null)}
+                      className="relative -mx-6 -mt-6 mb-4 overflow-hidden rounded-t-2xl border-b border-slate-200 dark:border-[#0065E1]/30 bg-[#02102e] group/poster cursor-pointer"
+                      title="Click to view full flyer"
+                    >
+                      <img
+                        src={talk.image}
+                        alt={`${talk.topic} event poster`}
+                        referrerPolicy="no-referrer"
+                        className="w-full h-44 object-cover object-center group-hover/poster:scale-105 transition-transform duration-500"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#02102e]/85 via-transparent to-transparent pointer-events-none" />
+                      <div className="absolute bottom-2.5 left-3.5 right-3.5 flex items-center justify-between text-xs text-white">
+                        <span className="px-2.5 py-0.5 rounded-full bg-[#0065E1]/90 backdrop-blur-md text-[10px] font-semibold">
+                          Live Interactive Session
+                        </span>
+                        <span className="text-[10px] font-medium text-[#01CF11] bg-black/60 px-2 py-0.5 rounded-full backdrop-blur-md">
+                          Sunday 4th Oct
+                        </span>
+                      </div>
+                    </div>
+                  )}
+
                   <div className="flex items-center justify-between mb-4 text-xs text-slate-500 dark:text-neutral-400">
                     <div className="flex items-center gap-1.5 text-[#0065E1] dark:text-[#01CF11] font-bold">
                       <Calendar className="w-3.5 h-3.5" />
@@ -164,6 +190,43 @@ export const ImpactTalksSection: React.FC<ImpactTalksSectionProps> = ({ onRsvpSe
           })}
         </div>
       </div>
+
+      {/* Full Flyer Lightbox Modal */}
+      {selectedFlyer && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
+          onClick={() => setSelectedFlyer(null)}
+        >
+          <div
+            className="relative max-w-4xl w-full max-h-[90vh] bg-[#02102e] rounded-2xl border border-[#0065E1]/50 p-4 sm:p-6 overflow-hidden flex flex-col items-center shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              onClick={() => setSelectedFlyer(null)}
+              className="absolute top-4 right-4 z-10 p-2 rounded-full bg-black/60 text-white hover:bg-black/90 transition-colors"
+              aria-label="Close flyer view"
+            >
+              <X className="w-5 h-5" />
+            </button>
+            <div className="w-full flex justify-between items-center mb-3 pr-10">
+              <span className="text-xs font-bold px-3 py-1 rounded-full bg-[#01CF11] text-[#02102e]">
+                Official Event Flyer
+              </span>
+              <span className="text-xs text-slate-300">
+                What Makes Us Human? • 4th October 2026
+              </span>
+            </div>
+            <div className="w-full flex-1 flex items-center justify-center overflow-auto max-h-[78vh]">
+              <img
+                src={selectedFlyer}
+                alt="What Makes Us Human? Official Event Flyer"
+                referrerPolicy="no-referrer"
+                className="max-w-full max-h-[75vh] object-contain rounded-xl shadow-lg border border-[#0065E1]/30"
+              />
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 };

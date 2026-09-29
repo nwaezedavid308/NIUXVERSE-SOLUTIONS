@@ -143,6 +143,32 @@ export const ShowSection: React.FC = () => {
                 <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-[#0065E1]/30 via-[#01CF11] to-transparent group-hover:from-[#0065E1] group-hover:via-[#01CF11] transition-all" />
 
                 <div>
+                  {/* Episode Poster Thumbnail (if present) */}
+                  {episode.image && (
+                    <div
+                      onClick={() => setActiveEpisode(episode)}
+                      className="relative -mx-6 -mt-6 mb-4 overflow-hidden rounded-t-2xl border-b border-slate-200 dark:border-[#0065E1]/30 cursor-pointer group/epimg bg-[#02102e]"
+                    >
+                      <img
+                        src={episode.image}
+                        alt={`${episode.title} event poster`}
+                        referrerPolicy="no-referrer"
+                        className="w-full h-44 object-cover object-center group-hover/epimg:scale-105 transition-transform duration-500"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#02102e]/85 via-transparent to-transparent pointer-events-none" />
+                      <div className="absolute bottom-2.5 left-3.5 right-3.5 flex items-center justify-between text-xs text-white">
+                        <span className="px-2.5 py-0.5 rounded-full bg-[#0065E1]/90 backdrop-blur-md text-[10px] font-semibold">
+                          Special Broadcast
+                        </span>
+                        {episode.eventDate && (
+                          <span className="text-[10px] font-medium text-[#01CF11] bg-black/60 px-2 py-0.5 rounded-full backdrop-blur-md">
+                            {episode.eventDate}
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                  )}
+
                   {/* Top metadata */}
                   <div className="flex items-center justify-between mb-4 text-xs text-slate-500 dark:text-neutral-400">
                     <div className="flex items-center gap-2 flex-wrap">
@@ -340,11 +366,33 @@ export const ShowSection: React.FC = () => {
           <div className="relative w-full max-w-2xl rounded-2xl border border-slate-200 bg-white text-slate-900 shadow-2xl dark:border-[#0065E1]/50 dark:bg-[#051b44] dark:text-white p-6 sm:p-8 max-h-[90vh] overflow-y-auto">
             <button
               onClick={() => setActiveEpisode(null)}
-              className="absolute top-5 right-5 p-2 rounded-lg text-slate-400 hover:text-slate-800 hover:bg-slate-100 dark:text-neutral-400 dark:hover:text-white dark:hover:bg-white/10 transition-colors"
+              className="absolute top-5 right-5 z-10 p-2 rounded-lg bg-black/40 text-white hover:bg-black/60 transition-colors"
               aria-label="Close modal"
             >
               <X className="w-5 h-5" />
             </button>
+
+            {activeEpisode.image && (
+              <div className="relative -mx-6 -mt-6 sm:-mx-8 sm:-mt-8 mb-6 overflow-hidden rounded-t-2xl border-b border-slate-200 dark:border-[#0065E1]/30 bg-[#02102e] flex items-center justify-center">
+                <img
+                  src={activeEpisode.image}
+                  alt={activeEpisode.title}
+                  referrerPolicy="no-referrer"
+                  className="w-full max-h-[460px] object-contain object-center"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#02102e]/60 via-transparent to-transparent pointer-events-none" />
+                <div className="absolute bottom-4 left-6 right-6 flex items-center justify-between text-xs text-white">
+                  <span className="px-3 py-1 rounded-full bg-[#01CF11] text-[#02102e] font-bold text-xs">
+                    Live Broadcast Event
+                  </span>
+                  {activeEpisode.eventDate && (
+                    <span className="font-semibold text-white bg-black/60 px-2.5 py-1 rounded-full">
+                      {activeEpisode.eventDate}
+                    </span>
+                  )}
+                </div>
+              </div>
+            )}
 
             <div className="flex items-center gap-2 mb-3">
               <span className="text-xs font-bold text-[#02102e] px-2.5 py-0.5 rounded bg-[#01CF11]">

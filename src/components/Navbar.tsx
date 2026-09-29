@@ -21,7 +21,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRsvp }) => {
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
         {/* Brand identity */}
         <a href="#" className="group flex flex-col justify-center">
-          <span className="font-serif font-medium text-xl sm:text-2xl tracking-normal text-slate-900 dark:text-white group-hover:text-[#0065E1] dark:group-hover:text-[#01CF11] transition-colors leading-tight">
+          <span className="font-medium text-xl sm:text-2xl tracking-normal text-slate-900 dark:text-white group-hover:text-[#0065E1] dark:group-hover:text-[#01CF11] transition-colors leading-tight">
             The Niuxverse
           </span>
           <span className="text-[10px] sm:text-[11px] text-[#0065E1] dark:text-[#01CF11] font-semibold tracking-wide">

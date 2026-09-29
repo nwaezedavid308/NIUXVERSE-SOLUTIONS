@@ -20,6 +20,7 @@ export interface Episode {
   duration: string;
   tag: string;
   featured?: boolean;
+  image?: string;
 }
 
 export interface AcademyCourse {
@@ -33,6 +34,10 @@ export interface AcademyCourse {
   toolsUsed?: string[];
   outcome: string;
   highlight?: string;
+  image?: string;
+  speakers?: Speaker[];
+  moderator?: string;
+  eventDate?: string;
 }
 
 export interface ImpactSession {
@@ -46,4 +51,5 @@ export interface ImpactSession {
   moderator?: string;
   spotsLeft: number;
   isComingSoon?: boolean;
+  image?: string;
 }

@@ -43,7 +43,7 @@ export const FounderSection: React.FC<FounderSectionProps> = ({
               </div>
 
               {/* Founder quote chip */}
-              <div className="pt-2 font-serif italic text-sm text-slate-700 dark:text-slate-200 leading-relaxed tracking-normal">
+              <div className="pt-2 font-normal italic text-sm text-slate-700 dark:text-slate-200 leading-relaxed tracking-normal">
                 “Technology gives us scale, but real emotions, empathy, and social connection give us meaning.”
               </div>
             </div>

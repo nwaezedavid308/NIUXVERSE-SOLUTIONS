@@ -19,6 +19,7 @@ export const SHOW_EPISODES: Episode[] = [
     tag: 'Happening 4th of October 2026',
     featured: true,
     isComingSoon: false,
+    image: '/flyer.png',
     description:
       'A special live session moderated by the King of Intelligence, exploring what truly defines our humanity as technology evolves. Featuring writer Mr Ifeanyi Nwakpoke and AI ethics and Governance expert Blessing Egbe.',
     keyQuestions: [
@@ -220,6 +221,29 @@ export const SHOW_EPISODES: Episode[] = [
 
 export const ACADEMY_COURSES: AcademyCourse[] = [
   {
+    id: 'course-what-makes-us-human',
+    code: 'NX-HMN',
+    title: 'What Makes Us Human? (Special Track)',
+    tagline: 'A transformative track exploring human consciousness, AI ethics, creative sovereignty, and what truly sets humans apart in the age of machines.',
+    level: 'Specialist',
+    duration: 'Live Session & 4-Week Track',
+    image: '/flyer.png',
+    highlight: 'Flagship Event',
+    speakers: [
+      { name: 'Mr Ifeanyi Nwakpoke', role: 'Writer' },
+      { name: 'Blessing Egbe', role: 'AI Ethics & Governance Expert' },
+    ],
+    moderator: 'King of Intelligence',
+    eventDate: 'Sunday, 4th of October 2026',
+    modules: [
+      'The Human Essence vs Synthetic Intelligence: Consciousness, empathy, and lived experience',
+      'AI Ethics & Digital Governance: Guardrails for responsible technological progress',
+      'Emotional Resilience in an Automated Era: Staying grounded and creatively sovereign',
+      'Human-Centered Innovation: Building tools and platforms that elevate human dignity',
+    ],
+    outcome: 'A clear ethical framework, strong creative agency, and actionable skills to build and lead human-centered technology ventures.',
+  },
+  {
     id: 'course-graphics-brand',
     code: 'NX-DSN',
     title: 'Graphics Design and Brand Strategy',
@@ -268,6 +292,7 @@ export const UPCOMING_IMPACT_TALKS: ImpactSession[] = [
     guest: 'Mr Ifeanyi Nwakpoke & Blessing Egbe',
     spotsLeft: 25,
     isComingSoon: false,
+    image: '/flyer.png',
   },
   {
     id: 'talk-1',

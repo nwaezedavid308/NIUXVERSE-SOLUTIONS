@@ -71,7 +71,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreShow, onOpenCommunity }) =>
               <span className="font-semibold text-slate-900 dark:text-white block mb-1 tracking-wide">
                 A Message from Nwaeze David:
               </span>
-              <p className="font-serif italic text-sm text-slate-800 dark:text-slate-200 mt-1 leading-snug tracking-normal">
+              <p className="font-normal italic text-sm text-slate-800 dark:text-slate-200 mt-1 leading-snug tracking-normal">
                 “We explore new technology not to replace human life, but to understand how it affects us, keep our friendships and communities strong, and build things that genuinely help people thrive.”
               </p>
             </div>
@@ -114,7 +114,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreShow, onOpenCommunity }) =>
                     Practical Learning Tracks
                   </h4>
                   <p className="text-xs text-slate-600 dark:text-slate-200 mt-0.5 leading-relaxed tracking-normal">
-                    Step-by-step tracks in Graphics Design & Brand Strategy and Product Design to build real products.
+                    Step-by-step tracks to build in demand skills and build real products.
                   </p>
                 </div>
               </div>

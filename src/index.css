@@ -3,90 +3,61 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 /* ==========================================================================
-   Exact Font Definitions from interactsoftware.com
-   1. Victor Serif (50 Medium, 55 Medium Italic) - Editorial / Headings
-   2. Mona Sans (Variable 200-900) - Body, UI, Labels, Buttons & Badges
+   Be Vietnam Pro Typeface Family
+   Clean, Modern Geometric & Humanist Grotesk with exceptional legibility
    ========================================================================== */
 
-@font-face {
-  font-family: "Victor Serif";
-  src: url("https://www.interactsoftware.com/wp-content/themes/interactsoftware-website-rebrand-2026/assets/fonts/VictorSerif-50Medium.woff2") format("woff2");
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Victor Serif";
-  src: url("https://www.interactsoftware.com/wp-content/themes/interactsoftware-website-rebrand-2026/assets/fonts/VictorSerif-55MediumItalic.woff2") format("woff2");
-  font-weight: 500;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Victor Serif Fallback";
-  src: local("Times New Roman"), local("Times"), serif;
-  size-adjust: 103.46%;
-  ascent-override: 102.45%;
-  descent-override: 24.16%;
-  line-gap-override: 0%;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Mona Sans Fallback";
-  src: url("https://www.interactsoftware.com/wp-content/themes/interactsoftware-website-rebrand-2026/assets/fonts/MonaSans-VariableFont_wdth,wght.woff2") format("woff2");
-  font-weight: 200 900;
-  font-style: normal;
-  font-display: swap;
-}
-
 :root {
-  --font-family-base: "Mona Sans", "Mona Sans Fallback", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-  --font-family-heading: "Victor Serif", "Victor Serif Fallback", Georgia, Cambria, "Times New Roman", Times, serif;
+  --font-family-base: "Be Vietnam Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  --font-family-heading: "Be Vietnam Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  --font-family-display: "Be Vietnam Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 
-  /* Typography Scale from interactsoftware.com */
-  --typo-h1-xlarge: 56px;
-  --typo-h1-large: 52px;
-  --typo-h1: 48px;
-  --typo-h2-xlarge: 52px;
-  --typo-h2-large: 40px;
-  --typo-h2: 36px;
-  --typo-h3: 32px;
-  --typo-h4: 28px;
-  --typo-h5: 24px;
-  --typo-h6: 20px;
+  /* Typographic Scale */
+  --typo-display: 64px;
+  --typo-h1: 52px;
+  --typo-h2: 38px;
+  --typo-h3: 28px;
+  --typo-h4: 24px;
+  --typo-h5: 20px;
+  --typo-h6: 18px;
 
-  --typo-body-xlarge: 24px;
-  --typo-body-large: 20px;
+  --typo-body-xlarge: 22px;
+  --typo-body-large: 18px;
   --typo-body-medium: 16px;
   --typo-body-small: 14px;
   --typo-body-xsmall: 12px;
 
+  --font-weight-thin: 100;
+  --font-weight-extralight: 200;
+  --font-weight-light: 300;
   --font-weight-regular: 400;
   --font-weight-medium: 500;
   --font-weight-semibold: 600;
   --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+  --font-weight-black: 900;
 }
 
 @theme {
-  --font-sans: var(--font-family-base);
-  --font-serif: var(--font-family-heading);
-  --font-heading: var(--font-family-heading);
-  --font-display: var(--font-family-heading);
-  --font-body: var(--font-family-base);
-  --font-mono-tech: "Mona Sans", monospace;
-  --font-montserrat: var(--font-family-base);
+  --font-sans: "Be Vietnam Pro", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-serif: "Be Vietnam Pro", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-heading: "Be Vietnam Pro", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-display: "Be Vietnam Pro", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-grotesk: "Be Vietnam Pro", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-vietnam: "Be Vietnam Pro", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: "Be Vietnam Pro", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono-tech: "Be Vietnam Pro", monospace;
+  --font-montserrat: "Be Vietnam Pro", -apple-system, BlinkMacSystemFont, sans-serif;
 
+  /* Brand Palette from uploaded theme */
   --color-dr-blue: #0065E1;
-  --color-dr-blue-hover: #0055c0;
+  --color-dr-blue-hover: #0052cc;
   --color-dr-blue-dark: #004499;
   --color-dr-blue-deep: #051b44;
   --color-dr-blue-navy: #02102e;
   --color-dr-green: #01CF11;
   --color-dr-green-light: #1ce52c;
-  --color-dr-green-hover: #01b80f;
+  --color-dr-green-hover: #00b80f;
   --color-dr-white: #ffffff;
   --color-dr-grey: #ffffff;
   --color-dr-grey-muted: #94a3b8;
@@ -139,10 +110,14 @@
   }
 }
 
-/* Typography Utility Classes */
-.typo-font-heading, .font-serif, .font-heading {
+/* Typography Utility Classes - Glori Grotesk */
+.font-glori, .font-grotesk, .typo-font-heading, .font-heading {
   font-family: var(--font-family-heading) !important;
   letter-spacing: 0.015em;
+}
+
+.font-serif {
+  font-family: var(--font-family-heading) !important;
 }
 
 .typo-font-body, .font-sans, .font-body {
@@ -150,17 +125,25 @@
   letter-spacing: 0.01em;
 }
 
+.typo-display {
+  font-family: var(--font-family-display);
+  font-size: var(--typo-display, 64px);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  line-height: 1.1;
+}
+
 .typo-h1 {
   font-family: var(--font-family-heading);
-  font-size: var(--typo-h1, 48px);
+  font-size: var(--typo-h1, 52px);
   font-weight: 500;
   letter-spacing: 0.015em;
-  line-height: 1.2;
+  line-height: 1.18;
 }
 
 .typo-h2 {
   font-family: var(--font-family-heading);
-  font-size: var(--typo-h2, 36px);
+  font-size: var(--typo-h2, 38px);
   font-weight: 500;
   letter-spacing: 0.015em;
   line-height: 1.2;
@@ -168,9 +151,9 @@
 
 .typo-h3 {
   font-family: var(--font-family-heading);
-  font-size: var(--typo-h3, 32px);
-  font-weight: 500;
-  letter-spacing: 0.015em;
+  font-size: var(--typo-h3, 28px);
+  font-weight: 700;
+  letter-spacing: 0.02em;
   line-height: 1.25;
 }
 
@@ -178,7 +161,15 @@
   font-family: var(--font-family-base);
   font-weight: 400;
   letter-spacing: 0.01em;
-  line-height: 1.6;
+  line-height: 1.65;
+}
+
+.typo-specimen-label {
+  font-family: var(--font-family-base);
+  font-weight: 500;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
 .typo-eyebrow {
