@@ -5,8 +5,8 @@
 
 /* ==========================================================================
    Flyer-Inspired Color Scheme
-   Light: Flyer blue palette (sky blue #4EB2FF, deep blue #3F7CAE)
-   Dark: Dark blue with green/cyan accents
+   Light: Clean white with flyer blue accents (#4EB2FF, #3F7CAE)
+   Dark: Dark blue (#0a1628) with cyan (#00D4AA) and green (#01CF11) accents
    ========================================================================== */
 
 :root {
@@ -14,7 +14,6 @@
   --font-family-heading: "Space Grotesk", "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
   --font-family-display: "Space Grotesk", "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
 
-  /* Typographic Scale */
   --typo-display: 96px;
   --typo-h1: 72px;
   --typo-h2: 56px;
@@ -55,8 +54,8 @@
     color: #ffffff;
   }
   html.light body {
-    background-color: #e8f4fd;
-    color: #0a1628;
+    background-color: #f0f7ff;
+    color: #1a2332;
   }
 
   body {
@@ -153,24 +152,24 @@
 
 /* Card styles with depth */
 .minimal-card {
-  background: rgba(10, 22, 40, 0.4);
-  border: 1px solid rgba(78, 178, 255, 0.15);
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(78, 178, 255, 0.2);
   backdrop-filter: blur(8px);
   transition: all 0.3s ease;
 }
 
 .minimal-card:hover {
-  border-color: rgba(78, 178, 255, 0.4);
-  background: rgba(10, 22, 40, 0.6);
-  box-shadow: 0 8px 32px rgba(78, 178, 255, 0.1);
+  border-color: rgba(78, 178, 255, 0.5);
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 8px 32px rgba(78, 178, 255, 0.15);
 }
 
 /* Subtle grid pattern */
 .gh-grid-pattern {
   background-size: 40px 40px;
   background-image: 
-    linear-gradient(to right, rgba(78, 178, 255, 0.08) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(78, 178, 255, 0.08) 1px, transparent 1px);
+    linear-gradient(to right, rgba(78, 178, 255, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(78, 178, 255, 0.06) 1px, transparent 1px);
 }
 
 /* Scrollbar */
@@ -178,7 +177,7 @@
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #0a1628;
+  background: #f0f7ff;
 }
 ::-webkit-scrollbar-thumb {
   background: #4EB2FF;
