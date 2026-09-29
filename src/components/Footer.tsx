@@ -44,16 +44,16 @@ export const Footer: React.FC<FooterProps> = ({ onOpenRsvp }) => {
           <div className="md:col-span-4 space-y-4">
             <h4 className="text-xs font-bold text-white uppercase tracking-wider">Connect</h4>
             <div className="grid grid-cols-2 gap-2 text-sm">
-              <a href="#the-show" className="text-slate-400 hover:text-white transition-colors">The Show</a>
-              <a href="#academy" className="text-slate-400 hover:text-white transition-colors">Academy</a>
-              <a href="#impact-talks" className="text-slate-400 hover:text-white transition-colors">Impact Talks</a>
-              <a href="#founder" className="text-slate-400 hover:text-white transition-colors">Founder</a>
+              <a href="#the-show" className="text-slate-400 hover:text-[#0065E1] transition-colors">The Show</a>
+              <a href="#academy" className="text-slate-400 hover:text-[#0065E1] transition-colors">Academy</a>
+              <a href="#impact-talks" className="text-slate-400 hover:text-[#0065E1] transition-colors">Impact Talks</a>
+              <a href="#founder" className="text-slate-400 hover:text-[#0065E1] transition-colors">Founder</a>
             </div>
             <div className="pt-3 space-y-2">
-              <a href="https://chat.whatsapp.com/CXzl5uB7Jz23AFsAYkwUFE?s=cl&p=a&mlu=4&ilr=4" target="_blank" rel="noopener noreferrer" className="w-full py-2.5 px-4 rounded-lg bg-[#01CF11]/10 text-[#01CF11] text-sm font-medium flex items-center justify-center gap-2 hover:bg-[#01CF11]/20 transition-all">
+              <a href="https://chat.whatsapp.com/CXzl5uB7Jz23AFsAYkwUFE?s=cl&p=a&mlu=4&ilr=4" target="_blank" rel="noopener noreferrer" className="w-full py-2.5 px-4 rounded-lg bg-[#01CF11] text-[#02102e] text-sm font-medium flex items-center justify-center gap-2 hover:bg-[#00b80f] transition-all">
                 Join WhatsApp Community <ArrowUpRight className="w-4 h-4" />
               </a>
-              <a href="https://wa.me/2348110607341" target="_blank" rel="noopener noreferrer" className="w-full py-2.5 px-4 rounded-lg border border-[#0065E1]/20 text-[#0065E1] text-sm font-medium flex items-center justify-center gap-2 hover:bg-[#0065E1]/10 transition-all">
+              <a href="https://wa.me/2348110607341" target="_blank" rel="noopener noreferrer" className="w-full py-2.5 px-4 rounded-lg border border-[#0065E1]/30 text-[#0065E1] text-sm font-medium flex items-center justify-center gap-2 hover:bg-[#0065E1]/10 transition-all">
                 Message on WhatsApp
               </a>
             </div>

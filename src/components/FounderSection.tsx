@@ -85,7 +85,7 @@ export const FounderSection: React.FC<FounderSectionProps> = ({ onOpenRsvp }) =>
             </div>
 
             <div className="mb-8">
-              <button onClick={() => setShowDetailedTreatise(!showDetailedTreatise)} className="text-sm text-[#0065E1] hover:underline flex items-center gap-1">
+              <button onClick={() => setShowDetailedTreatise(!showDetailedTreatise)} className="text-sm text-[#0065E1] hover:text-[#0052cc] flex items-center gap-1 transition-colors">
                 {showDetailedTreatise ? 'Hide Key Ideas' : 'Explore Key Ideas'}
                 {showDetailedTreatise ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
               </button>

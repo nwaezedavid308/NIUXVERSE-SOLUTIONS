@@ -48,7 +48,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRsvp }) => {
             <a
               key={link.label}
               href={link.href}
-              className="text-sm font-medium text-slate-400 hover:text-white transition-colors"
+              className="text-sm font-medium text-slate-400 hover:text-[#01CF11] transition-colors"
             >
               {link.label}
             </a>
@@ -62,7 +62,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRsvp }) => {
             href="https://chat.whatsapp.com/CXzl5uB7Jz23AFsAYkwUFE?s=cl&p=a&mlu=4&ilr=4"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-sm font-medium text-white hover:text-[#01CF11] transition-colors flex items-center gap-1"
+            className="text-sm font-medium px-4 py-2 rounded-lg bg-[#01CF11] text-[#02102e] hover:bg-[#00b80f] transition-all flex items-center gap-1"
           >
             Join Community
             <ArrowUpRight className="w-3.5 h-3.5" />
@@ -108,7 +108,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRsvp }) => {
               href="https://chat.whatsapp.com/CXzl5uB7Jz23AFsAYkwUFE?s=cl&p=a&mlu=4&ilr=4"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 w-full py-2.5 rounded-lg bg-[#01CF11]/10 text-[#01CF11] text-sm font-medium"
+              className="flex items-center justify-center gap-2 w-full py-2.5 rounded-lg bg-[#01CF11] text-[#02102e] text-sm font-medium hover:bg-[#00b80f] transition-all"
             >
               Join Community
               <ArrowUpRight className="w-4 h-4" />

@@ -109,12 +109,12 @@ export const ImpactTalksSection: React.FC<ImpactTalksSectionProps> = ({ onRsvpSe
                     <span className="text-xs text-[#0065E1]">{talk.spotsLeft} seats left</span>
                   )}
                   <div className="flex items-center gap-2">
-                    <button onClick={() => toggleTalk(talk.id)} className="text-xs text-slate-500 hover:text-white flex items-center gap-1">
+                    <button onClick={() => toggleTalk(talk.id)} className="text-xs text-slate-500 hover:text-[#0065E1] flex items-center gap-1 transition-colors">
                       {isExpanded ? 'Hide' : 'Details'}
                       {isExpanded ? <ChevronUp className="w-3 h-3" /> : <ChevronDown className="w-3 h-3" />}
                     </button>
                     {!talk.isComingSoon && (
-                      <button onClick={() => onRsvpSession(talk)} className="px-3 py-1.5 rounded-lg bg-[#01CF11]/10 text-[#01CF11] text-xs font-medium hover:bg-[#01CF11]/20 transition-all flex items-center gap-1">
+                      <button onClick={() => onRsvpSession(talk)} className="px-3 py-1.5 rounded-lg bg-[#01CF11] text-[#02102e] text-xs font-medium hover:bg-[#00b80f] transition-all flex items-center gap-1">
                         Reserve <ArrowUpRight className="w-3 h-3" />
                       </button>
                     )}
@@ -130,7 +130,7 @@ export const ImpactTalksSection: React.FC<ImpactTalksSectionProps> = ({ onRsvpSe
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm" onClick={() => setSelectedFlyer(null)}>
           <div className="relative max-w-4xl w-full max-h-[90vh] bg-[#02102e] rounded-xl border border-[#0065E1]/30 p-4 flex flex-col items-center" onClick={(e) => e.stopPropagation()}>
             <button onClick={() => setSelectedFlyer(null)} className="absolute top-4 right-4 p-2 text-slate-500 hover:text-white"><X className="w-5 h-5" /></button>
-            <span className="text-xs font-bold px-3 py-1 rounded-full bg-[#01CF11]/15 text-[#01CF11] mb-3">Official Event Flyer</span>
+            <span className="text-xs font-bold px-3 py-1 rounded-full bg-[#01CF11] text-[#02102e] mb-3">Official Event Flyer</span>
             <img src={selectedFlyer} alt="Event Flyer" className="max-w-full max-h-[75vh] object-contain rounded-lg" />
           </div>
         </div>

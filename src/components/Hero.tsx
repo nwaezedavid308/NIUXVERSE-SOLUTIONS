@@ -82,7 +82,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreShow, onOpenCommunity }) =>
               <a
                 href="#the-show"
                 onClick={onExploreShow}
-                className="group w-full sm:w-auto px-8 py-4 rounded-xl bg-[#0065E1] text-white font-semibold text-sm tracking-wide shadow-xl shadow-[#0065E1]/20 hover:bg-[#0052cc] hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 flex items-center justify-center gap-2.5"
+                className="group w-full sm:w-auto px-8 py-4 rounded-xl bg-[#0065E1] text-white font-semibold text-sm tracking-wide shadow-xl shadow-[#0065E1]/20 hover:bg-[#0052cc] hover:shadow-[#0065E1]/30 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 flex items-center justify-center gap-2.5"
               >
                 <Radio className="w-4 h-4" />
                 <span>Explore the Show</span>
@@ -93,7 +93,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreShow, onOpenCommunity }) =>
                 href="https://chat.whatsapp.com/CXzl5uB7Jz23AFsAYkwUFE?s=cl&p=a&mlu=4&ilr=4"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group w-full sm:w-auto px-8 py-4 rounded-xl bg-[#01CF11] text-[#02102e] font-semibold text-sm tracking-wide shadow-xl shadow-[#01CF11]/20 hover:bg-[#00b80f] hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 flex items-center justify-center gap-2.5"
+                className="group w-full sm:w-auto px-8 py-4 rounded-xl bg-[#01CF11] text-[#02102e] font-semibold text-sm tracking-wide shadow-xl shadow-[#01CF11]/20 hover:bg-[#00b80f] hover:shadow-[#01CF11]/30 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 flex items-center justify-center gap-2.5"
               >
                 <Users className="w-4 h-4" />
                 <span>Join the Community</span>
@@ -169,7 +169,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreShow, onOpenCommunity }) =>
                   href="https://chat.whatsapp.com/CXzl5uB7Jz23AFsAYkwUFE?s=cl&p=a&mlu=4&ilr=4"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[#01CF11] hover:underline font-semibold"
+                  className="text-[#01CF11] hover:text-[#00b80f] font-semibold transition-colors"
                 >
                   Join our WhatsApp group
                 </a>
@@ -196,7 +196,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreShow, onOpenCommunity }) =>
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 1.2 + idx * 0.1, ease: [0.16, 1, 0.3, 1] }}
-              className="p-5 rounded-xl bg-[#051b44]/30 border border-[#0065E1]/10 hover:border-[#0065E1]/30 transition-all duration-300 group"
+              className="p-5 rounded-xl bg-[#051b44]/30 border border-[#0065E1]/10 hover:border-[#0065E1]/30 hover:bg-[#051b44]/50 transition-all duration-300 group"
             >
               <span className="font-display font-bold text-3xl sm:text-4xl text-white tracking-tight group-hover:text-[#0065E1] transition-colors">
                 {stat.number}

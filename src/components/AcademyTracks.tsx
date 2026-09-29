@@ -66,7 +66,7 @@ export const AcademyTracks: React.FC<AcademyTracksProps> = ({ onEnroll }) => {
                       <img src={course.image} alt={course.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                       <div className="absolute inset-0 bg-gradient-to-t from-[#02102e]/80 to-transparent" />
                       {course.highlight && (
-                        <span className="absolute top-3 right-3 px-2 py-0.5 rounded bg-[#01CF11]/15 text-[#01CF11] text-[10px] font-bold uppercase">{course.highlight}</span>
+                        <span className="absolute top-3 right-3 px-2 py-0.5 rounded bg-[#01CF11] text-[#02102e] text-[10px] font-bold uppercase">{course.highlight}</span>
                       )}
                     </div>
                   )}
@@ -93,11 +93,11 @@ export const AcademyTracks: React.FC<AcademyTracksProps> = ({ onEnroll }) => {
                 </div>
 
                 <div className="pt-4 border-t border-[#01CF11]/10 flex items-center justify-between">
-                  <button onClick={() => toggleSyllabus(course.id)} className="text-xs text-slate-500 hover:text-white flex items-center gap-1">
+                  <button onClick={() => toggleSyllabus(course.id)} className="text-xs text-slate-500 hover:text-[#01CF11] flex items-center gap-1 transition-colors">
                     {isSyllabusOpen ? 'Hide Topics' : 'View Topics'}
                     {isSyllabusOpen ? <ChevronUp className="w-3 h-3" /> : <ChevronDown className="w-3 h-3" />}
                   </button>
-                  <button onClick={() => onEnroll(course)} className="px-4 py-2 rounded-lg bg-[#01CF11]/10 text-[#01CF11] text-xs font-medium hover:bg-[#01CF11]/20 transition-all flex items-center gap-1">
+                  <button onClick={() => onEnroll(course)} className="px-4 py-2 rounded-lg bg-[#01CF11] text-[#02102e] text-xs font-medium hover:bg-[#00b80f] transition-all flex items-center gap-1">
                     Join Track <ArrowRight className="w-3 h-3" />
                   </button>
                 </div>
@@ -130,7 +130,7 @@ export const AcademyTracks: React.FC<AcademyTracksProps> = ({ onEnroll }) => {
               <span className="text-xs text-[#01CF11] font-medium block mb-1">Outcome:</span>
               <p className="text-sm text-slate-400">{selectedCourse.outcome}</p>
             </div>
-            <button onClick={() => { const c = selectedCourse; setSelectedCourse(null); onEnroll(c); }} className="mt-6 w-full py-3 rounded-lg bg-[#01CF11]/10 text-[#01CF11] font-medium text-sm hover:bg-[#01CF11]/20 transition-all">Join Track</button>
+            <button onClick={() => { const c = selectedCourse; setSelectedCourse(null); onEnroll(c); }} className="mt-6 w-full py-3 rounded-lg bg-[#01CF11] text-[#02102e] font-medium text-sm hover:bg-[#00b80f] transition-all">Join Track</button>
           </div>
         </div>
       )}
