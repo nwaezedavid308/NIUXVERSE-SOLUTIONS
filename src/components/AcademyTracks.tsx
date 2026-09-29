@@ -19,6 +19,13 @@ export const AcademyTracks: React.FC<AcademyTracksProps> = ({ onEnroll }) => {
     setExpandedSyllabusId(expandedSyllabusId === id ? null : id);
   };
 
+  // Community images for course cards
+  const communityImages = [
+    '/community (1).jpg',
+    '/community (3).jpg',
+    '/community (5).jpg',
+  ];
+
   return (
     <section id="academy" className="py-24 sm:py-32 relative">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
@@ -43,6 +50,7 @@ export const AcademyTracks: React.FC<AcademyTracksProps> = ({ onEnroll }) => {
           {ACADEMY_COURSES.map((course, idx) => {
             const isSyllabusOpen = expandedSyllabusId === course.id;
             const isLarge = idx === 0;
+            const cardImage = course.image || communityImages[idx % communityImages.length];
 
             return (
               <motion.div
@@ -56,22 +64,20 @@ export const AcademyTracks: React.FC<AcademyTracksProps> = ({ onEnroll }) => {
                 }`}
               >
                 <div>
-                  {course.image && (
-                    <div
-                      onClick={() => setSelectedCourse(course)}
-                      className={`relative -mx-6 -mt-6 mb-5 overflow-hidden rounded-t-xl border-b border-[#30363d]/30 cursor-pointer ${
-                        isLarge ? 'h-48 lg:h-64' : 'h-36'
-                      }`}
-                    >
-                      <img src={course.image} alt={course.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#010409]/80 to-transparent" />
-                      {course.highlight && (
-                        <span className="absolute top-3 right-3 px-2 py-0.5 rounded bg-[#3fb950]/15 text-[#3fb950] text-[10px] font-bold uppercase">
-                          {course.highlight}
-                        </span>
-                      )}
-                    </div>
-                  )}
+                  <div
+                    onClick={() => setSelectedCourse(course)}
+                    className={`relative -mx-6 -mt-6 mb-5 overflow-hidden rounded-t-xl border-b border-[#30363d]/30 cursor-pointer ${
+                      isLarge ? 'h-48 lg:h-64' : 'h-36'
+                    }`}
+                  >
+                    <img src={cardImage} alt={course.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#010409]/80 to-transparent" />
+                    {course.highlight && (
+                      <span className="absolute top-3 right-3 px-2 py-0.5 rounded bg-[#3fb950]/15 text-[#3fb950] text-[10px] font-bold uppercase">
+                        {course.highlight}
+                      </span>
+                    )}
+                  </div>
 
                   <div className="flex items-center gap-2 mb-3 text-xs text-[#8b949e]">
                     <span className="font-display font-bold text-[#3fb950]">{course.code}</span>

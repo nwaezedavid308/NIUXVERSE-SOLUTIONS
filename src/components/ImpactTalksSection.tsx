@@ -19,6 +19,13 @@ export const ImpactTalksSection: React.FC<ImpactTalksSectionProps> = ({ onRsvpSe
     setExpandedTalks((prev) => ({ ...prev, [id]: !prev[id] }));
   };
 
+  // Community images for talk cards
+  const communityImages = [
+    '/community (2).jpg',
+    '/community (4).jpg',
+    '/community (6).jpg',
+  ];
+
   return (
     <section id="impact-talks" className="py-24 sm:py-32 relative">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
@@ -43,6 +50,7 @@ export const ImpactTalksSection: React.FC<ImpactTalksSectionProps> = ({ onRsvpSe
           {UPCOMING_IMPACT_TALKS.map((talk, idx) => {
             const isExpanded = !!expandedTalks[talk.id];
             const isLarge = idx === 0;
+            const cardImage = talk.image || communityImages[idx % communityImages.length];
 
             return (
               <motion.div
@@ -56,17 +64,15 @@ export const ImpactTalksSection: React.FC<ImpactTalksSectionProps> = ({ onRsvpSe
                 }`}
               >
                 <div>
-                  {talk.image && (
-                    <div
-                      onClick={() => setSelectedFlyer(talk.image || null)}
-                      className={`relative -mx-5 -mt-5 mb-4 overflow-hidden rounded-t-xl border-b border-[#30363d]/30 cursor-pointer ${
-                        isLarge ? 'h-44 lg:h-56' : 'h-32'
-                      }`}
-                    >
-                      <img src={talk.image} alt={talk.topic} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#010409]/80 to-transparent" />
-                    </div>
-                  )}
+                  <div
+                    onClick={() => setSelectedFlyer(talk.image || null)}
+                    className={`relative -mx-5 -mt-5 mb-4 overflow-hidden rounded-t-xl border-b border-[#30363d]/30 cursor-pointer ${
+                      isLarge ? 'h-44 lg:h-56' : 'h-32'
+                    }`}
+                  >
+                    <img src={cardImage} alt={talk.topic} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#010409]/80 to-transparent" />
+                  </div>
 
                   <div className="flex items-center justify-between mb-3 text-xs text-[#8b949e]">
                     <div className="flex items-center gap-1.5 text-[#58a6ff]">

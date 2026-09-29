@@ -8,15 +8,21 @@ interface FounderSectionProps {
 
 export const FounderSection: React.FC<FounderSectionProps> = ({ onOpenRsvp }) => {
   const [showDetailedTreatise, setShowDetailedTreatise] = useState(false);
+  const [activeImage, setActiveImage] = useState(0);
 
   const headerRef = useRef<HTMLDivElement>(null);
   const headerInView = useInView(headerRef, { once: true, margin: '-100px' });
+
+  const davidImages = [
+    '/DAVID PICTURE (1).jpeg',
+    '/DAVID PICTURE (2).jpeg',
+  ];
 
   return (
     <section id="founder" className="py-24 sm:py-32 relative">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-          {/* Left: Visual */}
+          {/* Left: Visual with DAVID images */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -24,17 +30,42 @@ export const FounderSection: React.FC<FounderSectionProps> = ({ onOpenRsvp }) =>
             transition={{ duration: 0.6 }}
             className="lg:col-span-5"
           >
-            <div className="rounded-2xl border border-[#30363d]/40 bg-[#1c2128]/30 p-8">
-              <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-[#a371f7] to-[#58a6ff] flex items-center justify-center mb-6">
-                <Crown className="w-7 h-7 text-white" />
+            <div className="relative">
+              {/* Main Image */}
+              <div className="rounded-2xl border border-[#30363d]/40 overflow-hidden">
+                <img
+                  src={davidImages[activeImage]}
+                  alt="Nwaeze David - The King of Intelligence"
+                  className="w-full h-[400px] sm:h-[500px] object-cover"
+                />
               </div>
-              <span className="text-xs text-[#8b949e] uppercase tracking-wider block mb-2">Founder & Architect</span>
-              <h3 className="font-display font-bold text-2xl text-white tracking-tight">Nwaeze David</h3>
-              <p className="text-[#a371f7] font-medium mt-1">"The King of Intelligence"</p>
-              <p className="text-sm text-[#8b949e] mt-1">Founder, Niuxverse Academy</p>
-              <div className="pt-4 mt-4 border-t border-[#30363d]/30 text-sm text-[#8b949e] italic">
-                "Technology gives us scale, but real emotions, empathy, and social connection give us meaning."
+
+              {/* Thumbnail selector */}
+              <div className="flex gap-3 mt-4">
+                {davidImages.map((img, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => setActiveImage(idx)}
+                    className={`w-16 h-16 rounded-lg overflow-hidden border-2 transition-all ${
+                      activeImage === idx ? 'border-[#a371f7]' : 'border-[#30363d]/40 hover:border-[#a371f7]/50'
+                    }`}
+                  >
+                    <img src={img} alt={`David ${idx + 1}`} className="w-full h-full object-cover" />
+                  </button>
+                ))}
               </div>
+
+              {/* Crown emblem overlay */}
+              <div className="absolute -top-4 -right-4 w-12 h-12 rounded-xl bg-gradient-to-br from-[#a371f7] to-[#58a6ff] flex items-center justify-center shadow-lg">
+                <Crown className="w-6 h-6 text-white" />
+              </div>
+            </div>
+
+            {/* Info card */}
+            <div className="mt-6 rounded-xl border border-[#30363d]/40 bg-[#1c2128]/30 p-5">
+              <span className="text-xs text-[#8b949e] uppercase tracking-wider block mb-1">Founder & Architect</span>
+              <h3 className="font-display font-bold text-xl text-white tracking-tight">Nwaeze David</h3>
+              <p className="text-[#a371f7] font-medium text-sm mt-1">"The King of Intelligence"</p>
             </div>
           </motion.div>
 

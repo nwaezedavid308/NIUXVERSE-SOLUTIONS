@@ -42,6 +42,17 @@ export const ShowSection: React.FC = () => {
     setExpandedEpisodeCards((prev) => ({ ...prev, [id]: !prev[id] }));
   };
 
+  // Community images for cards without episode images
+  const communityImages = [
+    '/community (1).jpg',
+    '/community (2).jpg',
+    '/community (3).jpg',
+    '/community (4).jpg',
+    '/community (5).jpg',
+    '/community (6).jpg',
+    '/community (7).jpg',
+  ];
+
   return (
     <section id="the-show" className="py-24 sm:py-32 relative">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
@@ -105,6 +116,7 @@ export const ShowSection: React.FC = () => {
             const isExpanded = !!expandedEpisodeCards[episode.id];
             const isLarge = idx === 0;
             const isWide = idx === 5 || idx === 11;
+            const cardImage = episode.image || communityImages[idx % communityImages.length];
 
             return (
               <motion.div
@@ -118,17 +130,15 @@ export const ShowSection: React.FC = () => {
                 }`}
               >
                 <div>
-                  {episode.image && (
-                    <div
-                      onClick={() => setActiveEpisode(episode)}
-                      className={`relative -mx-5 -mt-5 mb-4 overflow-hidden rounded-t-xl border-b border-[#30363d]/30 cursor-pointer ${
-                        isLarge ? 'h-40 lg:h-56' : 'h-32'
-                      }`}
-                    >
-                      <img src={episode.image} alt={episode.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#010409]/80 to-transparent" />
-                    </div>
-                  )}
+                  <div
+                    onClick={() => setActiveEpisode(episode)}
+                    className={`relative -mx-5 -mt-5 mb-4 overflow-hidden rounded-t-xl border-b border-[#30363d]/30 cursor-pointer ${
+                      isLarge ? 'h-40 lg:h-56' : 'h-32'
+                    }`}
+                  >
+                    <img src={cardImage} alt={episode.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#010409]/80 to-transparent" />
+                  </div>
 
                   <div className="flex items-center justify-between mb-3 text-xs text-[#8b949e]">
                     <div className="flex items-center gap-2">
