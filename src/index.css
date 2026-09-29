@@ -4,7 +4,9 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 /* ==========================================================================
-   Redesigned Typography — Bold, Editorial, Inspired by DRASA & Little Website Co.
+   Minimalist, Bold Design System
+   Inspired by GitHub Universe, Bloopah, NotaryHelper
+   Clean, professional, not "vibe coded"
    ========================================================================== */
 
 :root {
@@ -12,13 +14,13 @@
   --font-family-heading: "Space Grotesk", "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
   --font-family-display: "Space Grotesk", "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
 
-  /* Typographic Scale — Larger, Bolder */
-  --typo-display: 88px;
-  --typo-h1: 64px;
-  --typo-h2: 48px;
-  --typo-h3: 32px;
-  --typo-h4: 24px;
-  --typo-h5: 20px;
+  /* Typographic Scale */
+  --typo-display: 120px;
+  --typo-h1: 80px;
+  --typo-h2: 56px;
+  --typo-h3: 40px;
+  --typo-h4: 28px;
+  --typo-h5: 22px;
   --typo-h6: 18px;
 
   --typo-body-xlarge: 20px;
@@ -26,54 +28,49 @@
   --typo-body-medium: 16px;
   --typo-body-small: 14px;
   --typo-body-xsmall: 12px;
-
-  --font-weight-thin: 100;
-  --font-weight-extralight: 200;
-  --font-weight-light: 300;
-  --font-weight-regular: 400;
-  --font-weight-medium: 500;
-  --font-weight-semibold: 600;
-  --font-weight-bold: 700;
-  --font-weight-extrabold: 800;
-  --font-weight-black: 900;
 }
 
 @theme {
   --font-sans: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
   --font-heading: "Space Grotesk", "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
   --font-display: "Space Grotesk", "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-grotesk: "Space Grotesk", "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
   --font-body: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
 
-  /* Brand Palette */
-  --color-dr-blue: #0065E1;
-  --color-dr-blue-hover: #0052cc;
-  --color-dr-blue-dark: #004499;
-  --color-dr-blue-deep: #051b44;
-  --color-dr-blue-navy: #02102e;
-  --color-dr-green: #01CF11;
-  --color-dr-green-light: #1ce52c;
-  --color-dr-green-hover: #00b80f;
-  --color-dr-white: #ffffff;
-  --color-dr-grey: #ffffff;
-  --color-dr-grey-muted: #94a3b8;
+  /* Clean, minimal palette */
+  --color-gh-navy: #0d1117;
+  --color-gh-dark: #161b22;
+  --color-gh-card: #1c2128;
+  --color-gh-border: #30363d;
+  --color-gh-text: #e6edf3;
+  --color-gh-text-muted: #8b949e;
+  --color-gh-purple: #a371f7;
+  --color-gh-pink: #f778ba;
+  --color-gh-blue: #58a6ff;
+  --color-gh-green: #3fb950;
+  --color-gh-orange: #d29922;
+
+  /* Brand */
+  --color-dr-blue: #58a6ff;
+  --color-dr-green: #3fb950;
+  --color-dr-navy: #010409;
 }
 
 @layer base {
   html.dark body {
-    background-color: #02102e;
-    color: #ffffff;
+    background-color: #010409;
+    color: #e6edf3;
   }
   html.light body {
-    background-color: #f4f7fc;
-    color: #0f172a;
+    background-color: #010409;
+    color: #e6edf3;
   }
 
   body {
     font-family: var(--font-family-base);
     letter-spacing: 0;
     overflow-x: hidden;
-    transition: background-color 0.25s ease, color 0.25s ease;
+    background-color: #010409;
+    color: #e6edf3;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -88,183 +85,116 @@
   }
 }
 
-/* Typography Utility Classes */
-.font-glori, .font-grotesk, .typo-font-heading, .font-heading {
-  font-family: var(--font-family-heading) !important;
-  letter-spacing: -0.02em;
-}
-
-.font-serif {
-  font-family: var(--font-family-heading) !important;
-}
-
-.typo-font-body, .font-sans, .font-body {
-  font-family: var(--font-family-base) !important;
-  letter-spacing: 0;
+/* Typography */
+.font-display {
+  font-family: var(--font-family-display);
 }
 
 .typo-display {
   font-family: var(--font-family-display);
-  font-size: var(--typo-display, 88px);
+  font-size: var(--typo-display, 120px);
   font-weight: 700;
   letter-spacing: -0.03em;
-  line-height: 1.0;
+  line-height: 0.9;
 }
 
 .typo-h1 {
   font-family: var(--font-family-heading);
-  font-size: var(--typo-h1, 64px);
+  font-size: var(--typo-h1, 80px);
   font-weight: 700;
   letter-spacing: -0.025em;
-  line-height: 1.05;
+  line-height: 0.95;
 }
 
 .typo-h2 {
   font-family: var(--font-family-heading);
-  font-size: var(--typo-h2, 48px);
+  font-size: var(--typo-h2, 56px);
   font-weight: 700;
   letter-spacing: -0.02em;
-  line-height: 1.1;
+  line-height: 1.0;
 }
 
 .typo-h3 {
   font-family: var(--font-family-heading);
-  font-size: var(--typo-h3, 32px);
+  font-size: var(--typo-h3, 40px);
   font-weight: 700;
   letter-spacing: -0.015em;
-  line-height: 1.15;
+  line-height: 1.1;
 }
 
-.typo-body {
-  font-family: var(--font-family-base);
-  font-weight: 400;
-  letter-spacing: 0;
-  line-height: 1.6;
+/* Typewriter cursor */
+.typewriter-cursor {
+  display: inline-block;
+  width: 4px;
+  height: 1em;
+  background: #3fb950;
+  margin-left: 4px;
+  animation: blink 1s step-end infinite;
+  vertical-align: text-bottom;
 }
 
-/* Custom electric light blue (#0065E1) & light green (#01CF11) aura */
-.dr-blue-glow {
-  background: radial-gradient(circle at 50% 30%, rgba(0, 101, 225, 0.4) 0%, rgba(1, 207, 17, 0.15) 50%, transparent 75%);
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
 }
 
-html.light .dr-blue-glow {
-  background: radial-gradient(circle at 50% 30%, rgba(0, 101, 225, 0.12) 0%, rgba(1, 207, 17, 0.08) 50%, transparent 75%);
+/* Minimal card */
+.minimal-card {
+  background: rgba(28, 33, 40, 0.4);
+  border: 1px solid rgba(48, 54, 61, 0.4);
+  backdrop-filter: blur(8px);
+  transition: all 0.3s ease;
 }
 
-.dr-green-glow {
-  background: radial-gradient(circle at 50% 50%, rgba(1, 207, 17, 0.25) 0%, rgba(0, 101, 225, 0.15) 50%, transparent 75%);
+.minimal-card:hover {
+  border-color: rgba(163, 113, 247, 0.3);
+  background: rgba(28, 33, 40, 0.6);
 }
 
-html.light .dr-green-glow {
-  background: radial-gradient(circle at 50% 50%, rgba(1, 207, 17, 0.1) 0%, rgba(0, 101, 225, 0.06) 50%, transparent 75%);
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, #a371f7 0%, #f778ba 50%, #58a6ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
-.dr-card {
-  background: linear-gradient(145deg, rgba(5, 27, 68, 0.95) 0%, rgba(2, 16, 46, 0.98) 100%);
-}
-
-html.light .dr-card {
-  background: #ffffff;
-}
-
-.dr-card-elevated {
-  background: linear-gradient(145deg, rgba(7, 34, 86, 0.95) 0%, rgba(3, 20, 58, 0.98) 100%);
-}
-
-html.light .dr-card-elevated {
-  background: #ffffff;
-}
-
-.dr-pill-green {
-  background: linear-gradient(90deg, #01CF11 0%, #01b80f 100%);
-}
-
-.dr-pill-blue {
-  background: linear-gradient(90deg, #0065E1 0%, #0050b5 100%);
-}
-
-.subtle-grid-pattern {
-  background-size: 36px 36px;
+/* Subtle grid */
+.gh-grid-pattern {
+  background-size: 40px 40px;
   background-image: 
-    linear-gradient(to right, rgba(0, 101, 225, 0.15) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(0, 101, 225, 0.15) 1px, transparent 1px);
+    linear-gradient(to right, rgba(48, 54, 61, 0.2) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(48, 54, 61, 0.2) 1px, transparent 1px);
 }
 
-html.light .subtle-grid-pattern {
-  background-image: 
-    linear-gradient(to right, rgba(0, 101, 225, 0.06) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(0, 101, 225, 0.06) 1px, transparent 1px);
-}
-
-/* ==========================================================================
-   Scroll Animation Utilities
-   ========================================================================== */
-
-/* Parallax container */
-.parallax-section {
-  will-change: transform;
-}
-
-/* Reveal on scroll */
-.reveal-hidden {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.reveal-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Stagger children */
-.stagger-children > * {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.stagger-children.reveal-visible > *:nth-child(1) { transition-delay: 0ms; opacity: 1; transform: translateY(0); }
-.stagger-children.reveal-visible > *:nth-child(2) { transition-delay: 100ms; opacity: 1; transform: translateY(0); }
-.stagger-children.reveal-visible > *:nth-child(3) { transition-delay: 200ms; opacity: 1; transform: translateY(0); }
-.stagger-children.reveal-visible > *:nth-child(4) { transition-delay: 300ms; opacity: 1; transform: translateY(0); }
-.stagger-children.reveal-visible > *:nth-child(5) { transition-delay: 400ms; opacity: 1; transform: translateY(0); }
-.stagger-children.reveal-visible > *:nth-child(6) { transition-delay: 500ms; opacity: 1; transform: translateY(0); }
-
-/* Smooth scroll */
-html {
-  scroll-behavior: smooth;
-}
-
-/* Custom scrollbar */
+/* Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #02102e;
+  background: #010409;
 }
 ::-webkit-scrollbar-thumb {
-  background: #0065E1;
+  background: #30363d;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #01CF11;
+  background: #a371f7;
 }
 
-/* Selection */
 ::selection {
-  background: #01CF11;
-  color: #02102e;
+  background: rgba(163, 113, 247, 0.3);
+  color: #ffffff;
 }
 
-/* Reduced motion */
+html {
+  scroll-behavior: smooth;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
-  }
-  html {
-    scroll-behavior: auto;
   }
 }
