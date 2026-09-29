@@ -4,9 +4,9 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 /* ==========================================================================
-   Flyer-Inspired Color Scheme
-   Light: Clean white with flyer blue accents (#4EB2FF, #3F7CAE)
-   Dark: Dark blue (#0a1628) with cyan (#00D4AA) and green (#01CF11) accents
+   Flyer Background Color Scheme
+   The flyer's dominant blue (#3F7CAE deep blue, #4EB2FF sky blue)
+   is used as the website background.
    ========================================================================== */
 
 :root {
@@ -35,7 +35,7 @@
   --font-display: "Space Grotesk", "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
   --font-body: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
 
-  /* Flyer-Inspired Palette */
+  /* Flyer Colors */
   --color-flyer-sky: #4EB2FF;
   --color-flyer-deep: #3F7CAE;
   --color-flyer-navy: #0a1628;
@@ -54,8 +54,8 @@
     color: #ffffff;
   }
   html.light body {
-    background-color: #f0f7ff;
-    color: #1a2332;
+    background-color: #3F7CAE;
+    color: #ffffff;
   }
 
   body {
@@ -135,11 +135,11 @@
 
 /* Brand glow effects */
 .dr-blue-glow {
-  background: radial-gradient(circle at 50% 30%, rgba(78, 178, 255, 0.15) 0%, transparent 70%);
+  background: radial-gradient(circle at 50% 30%, rgba(78, 178, 255, 0.2) 0%, transparent 70%);
 }
 
 .dr-green-glow {
-  background: radial-gradient(circle at 50% 30%, rgba(0, 212, 170, 0.1) 0%, transparent 70%);
+  background: radial-gradient(circle at 50% 30%, rgba(0, 212, 170, 0.15) 0%, transparent 70%);
 }
 
 /* Gradient text — flyer colors */
@@ -152,24 +152,24 @@
 
 /* Card styles with depth */
 .minimal-card {
-  background: rgba(255, 255, 255, 0.8);
-  border: 1px solid rgba(78, 178, 255, 0.2);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(8px);
   transition: all 0.3s ease;
 }
 
 .minimal-card:hover {
-  border-color: rgba(78, 178, 255, 0.5);
-  background: rgba(255, 255, 255, 0.95);
-  box-shadow: 0 8px 32px rgba(78, 178, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
 }
 
 /* Subtle grid pattern */
 .gh-grid-pattern {
   background-size: 40px 40px;
   background-image: 
-    linear-gradient(to right, rgba(78, 178, 255, 0.06) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(78, 178, 255, 0.06) 1px, transparent 1px);
+    linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
 }
 
 /* Scrollbar */
@@ -177,7 +177,7 @@
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #f0f7ff;
+  background: #3F7CAE;
 }
 ::-webkit-scrollbar-thumb {
   background: #4EB2FF;
