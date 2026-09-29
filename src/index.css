@@ -4,9 +4,8 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 /* ==========================================================================
-   Minimalist, Bold Design System
-   Inspired by GitHub Universe, Bloopah, NotaryHelper
-   Clean, professional, not "vibe coded"
+   Original Brand Color Scheme Restored
+   Blue: #0065E1 | Green: #01CF11 | Navy: #02102e
    ========================================================================== */
 
 :root {
@@ -15,12 +14,12 @@
   --font-family-display: "Space Grotesk", "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
 
   /* Typographic Scale */
-  --typo-display: 120px;
-  --typo-h1: 80px;
-  --typo-h2: 56px;
-  --typo-h3: 40px;
-  --typo-h4: 28px;
-  --typo-h5: 22px;
+  --typo-display: 88px;
+  --typo-h1: 64px;
+  --typo-h2: 48px;
+  --typo-h3: 32px;
+  --typo-h4: 24px;
+  --typo-h5: 20px;
   --typo-h6: 18px;
 
   --typo-body-xlarge: 20px;
@@ -36,41 +35,34 @@
   --font-display: "Space Grotesk", "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
   --font-body: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
 
-  /* Clean, minimal palette */
-  --color-gh-navy: #0d1117;
-  --color-gh-dark: #161b22;
-  --color-gh-card: #1c2128;
-  --color-gh-border: #30363d;
-  --color-gh-text: #e6edf3;
-  --color-gh-text-muted: #8b949e;
-  --color-gh-purple: #a371f7;
-  --color-gh-pink: #f778ba;
-  --color-gh-blue: #58a6ff;
-  --color-gh-green: #3fb950;
-  --color-gh-orange: #d29922;
-
-  /* Brand */
-  --color-dr-blue: #58a6ff;
-  --color-dr-green: #3fb950;
-  --color-dr-navy: #010409;
+  /* Original Brand Palette */
+  --color-dr-blue: #0065E1;
+  --color-dr-blue-hover: #0052cc;
+  --color-dr-blue-dark: #004499;
+  --color-dr-blue-deep: #051b44;
+  --color-dr-blue-navy: #02102e;
+  --color-dr-green: #01CF11;
+  --color-dr-green-light: #1ce52c;
+  --color-dr-green-hover: #00b80f;
+  --color-dr-white: #ffffff;
+  --color-dr-grey-muted: #94a3b8;
 }
 
 @layer base {
   html.dark body {
-    background-color: #010409;
-    color: #e6edf3;
+    background-color: #02102e;
+    color: #ffffff;
   }
   html.light body {
-    background-color: #010409;
-    color: #e6edf3;
+    background-color: #f4f7fc;
+    color: #0f172a;
   }
 
   body {
     font-family: var(--font-family-base);
     letter-spacing: 0;
     overflow-x: hidden;
-    background-color: #010409;
-    color: #e6edf3;
+    transition: background-color 0.25s ease, color 0.25s ease;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -92,79 +84,72 @@
 
 .typo-display {
   font-family: var(--font-family-display);
-  font-size: var(--typo-display, 120px);
+  font-size: var(--typo-display, 88px);
   font-weight: 700;
   letter-spacing: -0.03em;
-  line-height: 0.9;
+  line-height: 0.95;
 }
 
 .typo-h1 {
   font-family: var(--font-family-heading);
-  font-size: var(--typo-h1, 80px);
+  font-size: var(--typo-h1, 64px);
   font-weight: 700;
   letter-spacing: -0.025em;
-  line-height: 0.95;
+  line-height: 1.0;
 }
 
 .typo-h2 {
   font-family: var(--font-family-heading);
-  font-size: var(--typo-h2, 56px);
+  font-size: var(--typo-h2, 48px);
   font-weight: 700;
   letter-spacing: -0.02em;
-  line-height: 1.0;
+  line-height: 1.05;
 }
 
 .typo-h3 {
   font-family: var(--font-family-heading);
-  font-size: var(--typo-h3, 40px);
+  font-size: var(--typo-h3, 32px);
   font-weight: 700;
   letter-spacing: -0.015em;
-  line-height: 1.1;
+  line-height: 1.15;
 }
 
-/* Typewriter cursor */
-.typewriter-cursor {
-  display: inline-block;
-  width: 4px;
-  height: 1em;
-  background: #3fb950;
-  margin-left: 4px;
-  animation: blink 1s step-end infinite;
-  vertical-align: text-bottom;
+/* Brand glow effects */
+.dr-blue-glow {
+  background: radial-gradient(circle at 50% 30%, rgba(0, 101, 225, 0.15) 0%, transparent 70%);
 }
 
-@keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
+.dr-green-glow {
+  background: radial-gradient(circle at 50% 30%, rgba(1, 207, 17, 0.1) 0%, transparent 70%);
 }
 
-/* Minimal card */
-.minimal-card {
-  background: rgba(28, 33, 40, 0.4);
-  border: 1px solid rgba(48, 54, 61, 0.4);
-  backdrop-filter: blur(8px);
-  transition: all 0.3s ease;
-}
-
-.minimal-card:hover {
-  border-color: rgba(163, 113, 247, 0.3);
-  background: rgba(28, 33, 40, 0.6);
-}
-
-/* Gradient text */
+/* Gradient text - brand colors */
 .gradient-text {
-  background: linear-gradient(135deg, #a371f7 0%, #f778ba 50%, #58a6ff 100%);
+  background: linear-gradient(135deg, #0065E1 0%, #01CF11 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-/* Subtle grid */
+/* Card styles */
+.minimal-card {
+  background: rgba(5, 27, 68, 0.4);
+  border: 1px solid rgba(0, 101, 225, 0.15);
+  backdrop-filter: blur(8px);
+  transition: all 0.3s ease;
+}
+
+.minimal-card:hover {
+  border-color: rgba(0, 101, 225, 0.4);
+  background: rgba(5, 27, 68, 0.6);
+}
+
+/* Subtle grid pattern */
 .gh-grid-pattern {
   background-size: 40px 40px;
   background-image: 
-    linear-gradient(to right, rgba(48, 54, 61, 0.2) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(48, 54, 61, 0.2) 1px, transparent 1px);
+    linear-gradient(to right, rgba(0, 101, 225, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 101, 225, 0.08) 1px, transparent 1px);
 }
 
 /* Scrollbar */
@@ -172,19 +157,19 @@
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #010409;
+  background: #02102e;
 }
 ::-webkit-scrollbar-thumb {
-  background: #30363d;
+  background: #0065E1;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #a371f7;
+  background: #01CF11;
 }
 
 ::selection {
-  background: rgba(163, 113, 247, 0.3);
-  color: #ffffff;
+  background: #01CF11;
+  color: #02102e;
 }
 
 html {
