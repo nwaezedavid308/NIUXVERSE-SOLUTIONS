@@ -196,6 +196,39 @@ html {
   scroll-behavior: smooth;
 }
 
+/* ==========================================================================
+   Hero Glow Arc — Signature blue horizon effect
+   ========================================================================== */
+
+@keyframes hero-glow-pulse {
+  0%, 100% { opacity: 0.7; }
+  50% { opacity: 1; }
+}
+
+@keyframes hero-arc-breathe {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); }
+  50% { transform: translate(-50%, -50%) scale(1.03); }
+}
+
+.hero-glow-arc {
+  animation: hero-glow-pulse 4s ease-in-out infinite;
+}
+
+.hero-arc-breathe {
+  animation: hero-arc-breathe 6s ease-in-out infinite;
+}
+
+/* ==========================================================================
+   Mobile responsiveness for hero
+   ========================================================================== */
+
+@media (max-width: 640px) {
+  .hero-glow-arc {
+    width: 200% !important;
+    height: 100% !important;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
