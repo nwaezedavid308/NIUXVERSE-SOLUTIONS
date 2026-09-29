@@ -3,7 +3,7 @@ import { useEffect, useRef, type RefObject } from 'react';
 const clamp = (value: number) => Math.max(0, Math.min(1, value));
 const smooth = (value: number) => { const t = clamp(value); return t * t * (3 - 2 * t); };
 
-/** Scroll scrubs clip one; clip two loops while visible. Retain at most 18 decoded frames. */
+/** Autoplay clip one, then loop clip two while visible. Retain at most 18 decoded frames. */
 export function useHeroSequence(sectionRef: RefObject<HTMLElement | null>, canvasRef: RefObject<HTMLCanvasElement | null>, paused: boolean, reducedMotion: boolean) {
   const pausedRef = useRef(paused);
   useEffect(() => { pausedRef.current = paused; }, [paused]);
@@ -24,7 +24,7 @@ export function useHeroSequence(sectionRef: RefObject<HTMLElement | null>, canva
     let disposed = false;
     let visible = true;
     let request = 0;
-    let progress = 0;
+    let elapsed = 0;
     let paintedProgress = 0;
     let lastStyleProgress = -1;
     let loopTime = 0;
@@ -64,18 +64,13 @@ export function useHeroSequence(sectionRef: RefObject<HTMLElement | null>, canva
       context.globalAlpha = opacity;
       context.drawImage(bitmap, (width - w) / 2, (height - h) / 2, w, h);
     };
-    const onScroll = () => {
-      const bounds = section.getBoundingClientRect();
-      const distance = Math.max(1, section.offsetHeight - canvas.clientHeight);
-      progress = clamp(-bounds.top / distance);
-    };
     const measure = () => {
       const bounds = canvas.parentElement!.getBoundingClientRect();
       const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
       width = Math.round(bounds.width * dpr); height = Math.round(bounds.height * dpr);
       canvas.width = width; canvas.height = height;
       decodeWidth = window.innerWidth < 700 ? 720 : 1280;
-      lastPaint = ''; onScroll();
+      lastPaint = '';
     };
     const tick = (now: number) => {
       request = 0;
@@ -84,8 +79,9 @@ export function useHeroSequence(sectionRef: RefObject<HTMLElement | null>, canva
       previousTime = now;
       {
         if (!pausedRef.current) {
-          paintedProgress = progress;
-          if (progress >= 0.82) loopTime += delta;
+          if (lastPaint) elapsed += delta;
+          paintedProgress = clamp(elapsed / 6000);
+          if (paintedProgress >= 0.82) loopTime += delta;
           else loopTime = 0;
         }
         const firstFrame = Math.round(clamp(paintedProgress / 0.7) * 50) + 1;
@@ -108,7 +104,7 @@ export function useHeroSequence(sectionRef: RefObject<HTMLElement | null>, canva
           if (first) draw(first, 1);
           if (second) draw(second, first ? blend : 1);
           context.globalAlpha = 1;
-          canvas.style.opacity = String(smooth(paintedProgress / 0.22));
+          canvas.style.opacity = String(smooth((elapsed + 90) / 450));
           canvas.dataset.clip = blend === 1 && second ? 'second' : 'first';
           canvas.dataset.frame = String(blend === 1 ? secondFrame : firstFrame);
           lastPaint = paintKey;
@@ -131,7 +127,7 @@ export function useHeroSequence(sectionRef: RefObject<HTMLElement | null>, canva
     const observer = new IntersectionObserver(([entry]) => {
       visible = entry.isIntersecting;
       if (visible) resume();
-      else { cancelAnimationFrame(request); request = 0; }
+      else { cancelAnimationFrame(request); request = 0; elapsed = 0; loopTime = 0; lastPaint = ''; }
     });
     const visibility = () => {
       if (document.hidden) { cancelAnimationFrame(request); request = 0; }
@@ -139,14 +135,12 @@ export function useHeroSequence(sectionRef: RefObject<HTMLElement | null>, canva
     };
     const resize = new ResizeObserver(measure);
     resize.observe(canvas.parentElement!); observer.observe(canvas);
-    window.addEventListener('scroll', onScroll, { passive: true });
     document.addEventListener('visibilitychange', visibility);
     measure(); resume();
     return () => {
       disposed = true;
       abort.abort(); cancelAnimationFrame(request);
       observer.disconnect(); resize.disconnect();
-      window.removeEventListener('scroll', onScroll);
       document.removeEventListener('visibilitychange', visibility);
       cache.forEach(bitmap => bitmap.close()); cache.clear();
     };

@@ -19,9 +19,9 @@ Vite 6.4.3 rejects Windows development-server paths containing `~`, including th
 
 - Source: 51 frames in `public/INTRO ANIMATION/FIRST VIDEO` and 38 in `SECOND VIDEO`.
 - Optimized derivatives: `public/animation/first` and `second` (about 3.2 MB total). Original source images are untouched. The portrait footage is rotated into a landscape horizon composition and cropped responsively without stretching.
-- Initial view shows the supplied horizon. Scrolling scrubs the first clip from start to end, then crossfades into clip two. The second sequence plays forward and backward in a continuous loop to avoid a visible cut between its unmatched endpoints.
-- Scrolling back reverses the first sequence and resets the second loop. Scroll remains native; there is no wheel/touch interception.
-- A pause/resume control freezes animation. Reduced-motion preference skips the extended scroll sequence and uses the still horizon.
+- Initial view shows the supplied horizon. The first clip starts automatically on page load on desktop and mobile, then crossfades into clip two. The second sequence plays forward and backward in a continuous loop to avoid a visible cut between its unmatched endpoints.
+- Returning to the hero after scrolling away replays the first sequence and resets the second loop. Scroll remains native; there is no wheel/touch interception.
+- A pause/resume control freezes animation. Reduced-motion preference uses the still horizon. The hero occupies one screen and never requires a scroll trigger.
 - Bitmap decoding is limited to 18 cached frames, with smaller decoded images on phones. Work pauses when offscreen or when the tab is hidden. Failed frame requests leave the last frame/still visible.
 
 `src/hooks/useHeroSequence.ts` owns timing, loading and cleanup; `Hero.tsx` owns accessible copy and controls. `LandingSections.tsx` renders the remaining page from existing project data. Theme selection was removed from this landing page to match the supplied dark references.
@@ -34,4 +34,4 @@ The source and required assets are versioned in GitHub.
 
 ## Brand and soundtrack
 
-The uploaded white SVG mark is used in the header and footer, with the coloured SVG as the favicon. `MusicControl.tsx` plays `public/SONG/Vector Pulse.mp3` at 30% volume and loops it. It attempts playback on load unless the visitor previously stopped it. Browsers may deny audible autoplay; in that case the header shows a Play music button. Stop pauses immediately and saves the preference locally; Play resumes playback. The control remains accessible in the fixed header on mobile and desktop.
+The uploaded white SVG mark is used in the header and footer, with the coloured SVG as the favicon. `MusicControl.tsx` plays `public/SONG/Vector Pulse.mp3` at 30% volume and loops it. It attempts playback on every fresh page load. Browsers may deny audible autoplay; in that case the first tap/click or keypress retries playback, and the header also provides a Play music button. Stop pauses immediately and prevents interaction-triggered restarts during that visit; Play resumes playback. The control remains accessible in the fixed header on mobile and desktop.
