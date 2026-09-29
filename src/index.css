@@ -52,12 +52,12 @@
 
 @layer base {
   html.dark body {
-    background-color: #02102e;
+    background-color: #0a1628;
     color: #ffffff;
   }
   html.light body {
-    background-color: #f4f7fc;
-    color: #0f172a;
+    background-color: #0a1628;
+    color: #ffffff;
   }
 
   body {
@@ -65,6 +65,8 @@
     letter-spacing: 0;
     overflow-x: hidden;
     transition: background-color 0.25s ease, color 0.25s ease;
+    background-color: #0a1628;
+    color: #ffffff;
   }
 
   h1, h2, h3, h4, h5, h6 {
