@@ -45,7 +45,6 @@ export const ShowSection: React.FC = () => {
   return (
     <section id="the-show" className="py-24 sm:py-32 relative">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        {/* Header */}
         <motion.div
           ref={headerRef}
           initial={{ opacity: 0, y: 30 }}
@@ -65,7 +64,6 @@ export const ShowSection: React.FC = () => {
           <p className="text-[#0065E1] mt-2 font-medium">Futuristic Tech & Human Life</p>
         </motion.div>
 
-        {/* Filters */}
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-10 pb-6 border-b border-[#0065E1]/10">
           <div className="flex items-center gap-2 overflow-x-auto w-full sm:w-auto pb-2 sm:pb-0">
             {categories.map((cat) => (
@@ -99,7 +97,6 @@ export const ShowSection: React.FC = () => {
           </div>
         </div>
 
-        {/* Bento Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 auto-rows-[minmax(260px,auto)]">
           {filteredEpisodes.map((episode, idx) => {
             const isPlaying = playingId === episode.id;
@@ -119,7 +116,6 @@ export const ShowSection: React.FC = () => {
                   isLarge ? 'md:col-span-2 lg:col-span-2 lg:row-span-2' : isWide ? 'md:col-span-2 lg:col-span-2' : ''
                 }`}
               >
-                {/* Top accent line */}
                 <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-[#0065E1] to-[#01CF11] opacity-0 group-hover:opacity-100 transition-opacity rounded-t-xl" />
 
                 <div>
@@ -230,7 +226,6 @@ export const ShowSection: React.FC = () => {
         )}
       </div>
 
-      {/* Modal */}
       {activeEpisode && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
           <div className="relative w-full max-w-2xl rounded-xl border border-[#0065E1]/30 bg-[#02102e] p-6 sm:p-8 max-h-[90vh] overflow-y-auto">
