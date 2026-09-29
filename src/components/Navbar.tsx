@@ -1,116 +1,27 @@
-import React, { useState, useEffect } from 'react';
-import { Menu, X, Radio, BookOpen, Users, ArrowUpRight, User } from 'lucide-react';
-import { ThemeToggle } from './ThemeToggle';
-
-interface NavbarProps {
-  onOpenRsvp: () => void;
-}
-
-export const Navbar: React.FC<NavbarProps> = ({ onOpenRsvp }) => {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+import { useEffect, useRef, useState } from 'react';
+import { ArrowUpRight, Menu, X } from 'lucide-react';
+import { MusicControl } from './MusicControl';
+import { COMMUNITY_URL } from '../data/links';
+const links = [['The Show', '#the-show'], ['Academy', '#academy'], ['Impact Talks', '#impact-talks'], ['Founder', '#founder']];
+export function Navbar() {
+  const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-
+  const toggle = useRef<HTMLButtonElement>(null);
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const navLinks = [
-    { label: 'The Show', href: '#the-show', icon: Radio },
-    { label: 'Academy', href: '#academy', icon: BookOpen },
-    { label: 'Impact Talks', href: '#impact-talks', icon: Users },
-    { label: 'Founder', href: '#founder', icon: User },
-  ];
-
-  return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled
-          ? 'bg-[#02102e]/90 backdrop-blur-xl border-b border-[#0065E1]/20'
-          : 'bg-transparent'
-      }`}
-    >
-      <nav className="max-w-7xl mx-auto px-6 lg:px-8 h-16 flex items-center justify-between">
-        <a href="#" className="flex items-center gap-2.5">
-          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#0065E1] to-[#01CF11] flex items-center justify-center">
-            <span className="text-white font-display font-bold text-sm">N</span>
-          </div>
-          <span className="font-display font-bold text-lg text-white tracking-tight">
-            The Niuxverse
-          </span>
-        </a>
-
-        <div className="hidden lg:flex items-center gap-8">
-          {navLinks.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              className="text-sm font-medium text-slate-400 hover:text-[#01CF11] transition-colors"
-            >
-              {link.label}
-            </a>
-          ))}
-        </div>
-
-        <div className="hidden sm:flex items-center gap-4">
-          <ThemeToggle id="navbar-theme-toggle" />
-          <a
-            href="https://chat.whatsapp.com/CXzl5uB7Jz23AFsAYkwUFE?s=cl&p=a&mlu=4&ilr=4"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-sm font-medium px-4 py-2 rounded-lg bg-[#01CF11] text-[#02102e] hover:bg-[#00b80f] transition-all flex items-center gap-1"
-          >
-            Join Community
-            <ArrowUpRight className="w-3.5 h-3.5" />
-          </a>
-        </div>
-
-        <div className="flex lg:hidden items-center gap-3">
-          <ThemeToggle id="mobile-nav-theme-toggle" className="sm:hidden" />
-          <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-2 text-slate-400 hover:text-white transition-colors"
-            aria-label="Toggle menu"
-          >
-            {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-          </button>
-        </div>
-      </nav>
-
-      <div
-        className={`lg:hidden overflow-hidden transition-all duration-300 ${
-          mobileMenuOpen ? 'max-h-80 border-b border-[#0065E1]/20' : 'max-h-0'
-        }`}
-      >
-        <div className="bg-[#02102e]/95 backdrop-blur-xl px-6 py-4 space-y-1">
-          {navLinks.map((link) => {
-            const Icon = link.icon;
-            return (
-              <a
-                key={link.label}
-                href={link.href}
-                onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-slate-400 hover:text-white hover:bg-[#0065E1]/10 transition-colors"
-              >
-                <Icon className="w-4 h-4 text-[#0065E1]" />
-                {link.label}
-              </a>
-            );
-          })}
-          <div className="pt-3 border-t border-[#0065E1]/10">
-            <a
-              href="https://chat.whatsapp.com/CXzl5uB7Jz23AFsAYkwUFE?s=cl&p=a&mlu=4&ilr=4"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 w-full py-2.5 rounded-lg bg-[#01CF11] text-[#02102e] text-sm font-medium hover:bg-[#00b80f] transition-all"
-            >
-              Join Community
-              <ArrowUpRight className="w-4 h-4" />
-            </a>
-          </div>
-        </div>
-      </div>
-    </header>
-  );
-};
+    const scroll = () => setScrolled(window.scrollY > 30);
+    scroll();
+    window.addEventListener('scroll', scroll, { passive: true });
+    const escape = (event: KeyboardEvent) => { if (event.key === 'Escape' && open) { setOpen(false); toggle.current?.focus(); } };
+    document.addEventListener('keydown', escape);
+    return () => { window.removeEventListener('scroll', scroll); document.removeEventListener('keydown', escape); };
+  }, [open]);
+  return <header className={`site-header${scrolled || open ? ' solid' : ''}`}>
+    <nav className="nav-inner" aria-label="Main navigation">
+      <a className="brand" href="#home" aria-label="Niuxverse home" onClick={() => setOpen(false)}><img className="brand-logo" src="/NIUXVERSE%20LOGO/NIUXVERSE%20LOGO%20WHTE%20SVG.svg" width="44" height="29" alt="" /><span>NIUXVERSE</span></a>
+      <div className="desktop-links">{links.map(([label, href]) => <a key={href} href={href}>{label}</a>)}</div>
+      <div className="nav-actions"><MusicControl /><a href={COMMUNITY_URL} target="_blank" rel="noreferrer" className="button nav-join">Join Community <ArrowUpRight size={14} /></a></div>
+      <button ref={toggle} className="menu-toggle" aria-expanded={open} aria-controls="mobile-menu" aria-label={open ? 'Close menu' : 'Open menu'} onClick={() => setOpen(!open)}>{open ? <X /> : <Menu />}</button>
+    </nav>
+    {open && <nav className="mobile-menu" id="mobile-menu" aria-label="Mobile navigation">{links.map(([label, href]) => <a key={href} href={href} onClick={() => setOpen(false)}>{label}<ArrowUpRight size={17} /></a>)}<a href={COMMUNITY_URL} target="_blank" rel="noreferrer" onClick={() => setOpen(false)}>Join Community <ArrowUpRight size={17} /></a></nav>}
+  </header>;
+}

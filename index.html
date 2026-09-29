@@ -1,46 +1,21 @@
 <!doctype html>
-<html lang="en" class="scroll-smooth dark">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script>
-      (function() {
-        // 1. Theme initialization to prevent flash of unstyled content (FOUC)
-        try {
-          var savedTheme = localStorage.getItem('niuxverse_theme');
-          if (savedTheme === 'light') {
-            document.documentElement.classList.remove('dark');
-            document.documentElement.classList.add('light');
-          } else {
-            document.documentElement.classList.add('dark');
-            document.documentElement.classList.remove('light');
-          }
-        } catch (e) {}
-
-        // 2. Intercept and prevent uncaught TypeError if an external/injected script assigns to fetch
-        window.addEventListener('error', function(event) {
-          var msg = (event && (event.message || (event.error && event.error.message))) || '';
-          if (typeof msg === 'string' && msg.indexOf('fetch') !== -1 && msg.indexOf('only a getter') !== -1) {
-            if (event.preventDefault) event.preventDefault();
-            if (event.stopImmediatePropagation) event.stopImmediatePropagation();
-            return true;
-          }
-        }, true);
-      })();
-    </script>
-    <title>The Niuxverse - Community of Changemakers, Thinkers &amp; Builders</title>
+    <meta name="theme-color" content="#030711" />
+    <link rel="icon" type="image/svg+xml" href="/NIUXVERSE%20LOGO/NIUXVERSE%20LOGO%20COLOURED%20SVG.svg" />
+    <title>Niuxverse — Changemakers, Thinkers &amp; Builders</title>
     <meta name="description" content="A community of changemakers, thinkers, and builders who leverage the power of technology to solve problems and impact lives." />
-    <meta property="og:title" content="The Niuxverse - Community of Changemakers, Thinkers &amp; Builders" />
-    <meta property="og:description" content="A community of changemakers, thinkers, and builders who leverage the power of technology to solve problems and impact lives." />
+    <meta property="og:title" content="Niuxverse — Changemakers, Thinkers &amp; Builders" />
+    <meta property="og:description" content="Technology with purpose. People at the centre. Explore the Niuxverse Show, Academy, and Impact Talks." />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   </head>
-  <body class="bg-[#f4f7fc] text-slate-800 dark:bg-[#02102e] dark:text-[#ffffff] selection:bg-[#01CF11] selection:text-[#02102e] antialiased font-sans transition-colors duration-300">
+  <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
-
