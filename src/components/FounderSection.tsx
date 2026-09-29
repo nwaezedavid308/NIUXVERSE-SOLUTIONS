@@ -22,7 +22,7 @@ export const FounderSection: React.FC<FounderSectionProps> = ({ onOpenRsvp }) =>
     <section id="founder" className="py-24 sm:py-32 relative">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-          {/* Left: Visual with DAVID images */}
+          {/* Left: Visual */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -36,7 +36,7 @@ export const FounderSection: React.FC<FounderSectionProps> = ({ onOpenRsvp }) =>
                 <img
                   src={davidImages[activeImage]}
                   alt="Nwaeze David - The King of Intelligence"
-                  className="w-full h-[400px] sm:h-[500px] object-cover"
+                  className="w-full h-[400px] sm:h-[500px] object-cover object-top"
                 />
               </div>
 
@@ -50,7 +50,7 @@ export const FounderSection: React.FC<FounderSectionProps> = ({ onOpenRsvp }) =>
                       activeImage === idx ? 'border-[#a371f7]' : 'border-[#30363d]/40 hover:border-[#a371f7]/50'
                     }`}
                   >
-                    <img src={img} alt={`David ${idx + 1}`} className="w-full h-full object-cover" />
+                    <img src={img} alt={`David ${idx + 1}`} className="w-full h-full object-cover object-top" />
                   </button>
                 ))}
               </div>

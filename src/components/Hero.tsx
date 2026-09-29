@@ -37,13 +37,6 @@ export const Hero: React.FC<HeroProps> = ({ onExploreShow, onOpenCommunity }) =>
     return () => clearInterval(timer);
   }, []);
 
-  const communityImages = [
-    '/community (1).jpg',
-    '/community (2).jpg',
-    '/community (3).jpg',
-    '/community (4).jpg',
-  ];
-
   return (
     <section ref={sectionRef} className="relative overflow-hidden min-h-screen flex items-center justify-center">
       {/* Background */}
@@ -107,28 +100,12 @@ export const Hero: React.FC<HeroProps> = ({ onExploreShow, onOpenCommunity }) =>
           </a>
         </motion.div>
 
-        {/* Community Image Gallery */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 2.5 }}
-          className="mt-16"
-        >
-          <div className="grid grid-cols-4 gap-3 max-w-2xl mx-auto">
-            {communityImages.map((img, idx) => (
-              <div key={idx} className="rounded-lg overflow-hidden border border-[#30363d]/30 hover:border-[#a371f7]/30 transition-all">
-                <img src={img} alt={`Community ${idx + 1}`} className="w-full h-20 sm:h-24 object-cover hover:scale-105 transition-transform duration-300" />
-              </div>
-            ))}
-          </div>
-        </motion.div>
-
         {/* Stats */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 3 }}
-          className="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-8 max-w-3xl mx-auto"
+          transition={{ duration: 0.8, delay: 2.5 }}
+          className="mt-16 grid grid-cols-2 sm:grid-cols-4 gap-8 max-w-3xl mx-auto"
         >
           {[
             { number: '12', label: 'Episodes' },
@@ -148,7 +125,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreShow, onOpenCommunity }) =>
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 3.5, duration: 1 }}
+        transition={{ delay: 3, duration: 1 }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2"
       >
         <motion.div
