@@ -4,10 +4,9 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 /* ==========================================================================
-   Upgraded Design System — Inspired by scroll-craft, tastemaker, ui-ux-pro-max
-   - Depth as five tools: offset shadows, edge light, scale-blur, overlap, grain
-   - One accent color, no pure black, tinted secondary text
-   - Scroll-driven feel, no AI-purple gradients
+   Flyer-Inspired Color Scheme
+   Light: Flyer blue palette (sky blue #4EB2FF, deep blue #3F7CAE)
+   Dark: Dark blue with green/cyan accents
    ========================================================================== */
 
 :root {
@@ -37,17 +36,17 @@
   --font-display: "Space Grotesk", "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
   --font-body: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
 
-  /* Brand Palette */
-  --color-dr-blue: #0065E1;
-  --color-dr-blue-hover: #0052cc;
-  --color-dr-blue-dark: #004499;
-  --color-dr-blue-deep: #051b44;
-  --color-dr-blue-navy: #02102e;
-  --color-dr-green: #01CF11;
-  --color-dr-green-light: #1ce52c;
-  --color-dr-green-hover: #00b80f;
-  --color-dr-white: #ffffff;
-  --color-dr-grey-muted: #94a3b8;
+  /* Flyer-Inspired Palette */
+  --color-flyer-sky: #4EB2FF;
+  --color-flyer-deep: #3F7CAE;
+  --color-flyer-navy: #0a1628;
+  --color-flyer-cyan: #00D4AA;
+  --color-flyer-green: #01CF11;
+
+  /* Brand */
+  --color-dr-blue: #4EB2FF;
+  --color-dr-green: #00D4AA;
+  --color-dr-navy: #0a1628;
 }
 
 @layer base {
@@ -56,8 +55,8 @@
     color: #ffffff;
   }
   html.light body {
-    background-color: #0a1628;
-    color: #ffffff;
+    background-color: #e8f4fd;
+    color: #0a1628;
   }
 
   body {
@@ -65,8 +64,6 @@
     letter-spacing: 0;
     overflow-x: hidden;
     transition: background-color 0.25s ease, color 0.25s ease;
-    background-color: #0a1628;
-    color: #ffffff;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -139,16 +136,16 @@
 
 /* Brand glow effects */
 .dr-blue-glow {
-  background: radial-gradient(circle at 50% 30%, rgba(0, 101, 225, 0.15) 0%, transparent 70%);
+  background: radial-gradient(circle at 50% 30%, rgba(78, 178, 255, 0.15) 0%, transparent 70%);
 }
 
 .dr-green-glow {
-  background: radial-gradient(circle at 50% 30%, rgba(1, 207, 17, 0.1) 0%, transparent 70%);
+  background: radial-gradient(circle at 50% 30%, rgba(0, 212, 170, 0.1) 0%, transparent 70%);
 }
 
-/* Gradient text — brand colors */
+/* Gradient text — flyer colors */
 .gradient-text {
-  background: linear-gradient(135deg, #0065E1 0%, #01CF11 100%);
+  background: linear-gradient(135deg, #4EB2FF 0%, #00D4AA 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -156,24 +153,24 @@
 
 /* Card styles with depth */
 .minimal-card {
-  background: rgba(5, 27, 68, 0.4);
-  border: 1px solid rgba(0, 101, 225, 0.15);
+  background: rgba(10, 22, 40, 0.4);
+  border: 1px solid rgba(78, 178, 255, 0.15);
   backdrop-filter: blur(8px);
   transition: all 0.3s ease;
 }
 
 .minimal-card:hover {
-  border-color: rgba(0, 101, 225, 0.4);
-  background: rgba(5, 27, 68, 0.6);
-  box-shadow: 0 8px 32px rgba(0, 101, 225, 0.1);
+  border-color: rgba(78, 178, 255, 0.4);
+  background: rgba(10, 22, 40, 0.6);
+  box-shadow: 0 8px 32px rgba(78, 178, 255, 0.1);
 }
 
 /* Subtle grid pattern */
 .gh-grid-pattern {
   background-size: 40px 40px;
   background-image: 
-    linear-gradient(to right, rgba(0, 101, 225, 0.08) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(0, 101, 225, 0.08) 1px, transparent 1px);
+    linear-gradient(to right, rgba(78, 178, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(78, 178, 255, 0.08) 1px, transparent 1px);
 }
 
 /* Scrollbar */
@@ -181,19 +178,19 @@
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #02102e;
+  background: #0a1628;
 }
 ::-webkit-scrollbar-thumb {
-  background: #0065E1;
+  background: #4EB2FF;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #01CF11;
+  background: #00D4AA;
 }
 
 ::selection {
-  background: #01CF11;
-  color: #02102e;
+  background: #00D4AA;
+  color: #0a1628;
 }
 
 html {
