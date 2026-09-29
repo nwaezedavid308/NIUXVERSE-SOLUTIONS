@@ -19,7 +19,7 @@ export const SHOW_EPISODES: Episode[] = [
     tag: 'Happening 4th of October 2026',
     featured: true,
     isComingSoon: false,
-    image: '/flyer.png',
+    image: '/event-flyer.jpg',
     description:
       'A special live session moderated by the King of Intelligence, exploring what truly defines our humanity as technology evolves. Featuring writer Mr Ifeanyi Nwakpoke and AI ethics and Governance expert Blessing Egbe.',
     keyQuestions: [
@@ -227,7 +227,7 @@ export const ACADEMY_COURSES: AcademyCourse[] = [
     tagline: 'A transformative track exploring human consciousness, AI ethics, creative sovereignty, and what truly sets humans apart in the age of machines.',
     level: 'Specialist',
     duration: 'Live Session & 4-Week Track',
-    image: '/flyer.png',
+    image: '/event-flyer.jpg',
     highlight: 'Flagship Event',
     speakers: [
       { name: 'Mr Ifeanyi Nwakpoke', role: 'Writer' },
@@ -292,7 +292,7 @@ export const UPCOMING_IMPACT_TALKS: ImpactSession[] = [
     guest: 'Mr Ifeanyi Nwakpoke & Blessing Egbe',
     spotsLeft: 25,
     isComingSoon: false,
-    image: '/flyer.png',
+    image: '/event-flyer.jpg',
   },
   {
     id: 'talk-1',
