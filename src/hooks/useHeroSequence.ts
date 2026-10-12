@@ -3,6 +3,27 @@ import { useEffect, useRef, type RefObject } from 'react';
 const clamp = (value: number) => Math.max(0, Math.min(1, value));
 const smooth = (value: number) => { const t = clamp(value); return t * t * (3 - 2 * t); };
 
+type FrameImage = ImageBitmap | HTMLImageElement;
+const releaseFrame = (frame: FrameImage) => { if ('close' in frame) frame.close(); };
+
+// Some mobile browsers cannot decode WebP with ImageBitmap resize options.
+// Regular images can still draw onto the canvas and need no autoplay permission.
+export async function decodeHeroFrame(blob: Blob, decodeWidth: number): Promise<FrameImage> {
+  if (typeof createImageBitmap === 'function') {
+    try { return await createImageBitmap(blob, { resizeWidth: decodeWidth, resizeQuality: 'medium' }); }
+    catch { /* Fall back to the browser's regular image decoder. */ }
+  }
+  const url = URL.createObjectURL(blob);
+  try {
+    return await new Promise<HTMLImageElement>((resolve, reject) => {
+      const image = new Image();
+      image.onload = () => resolve(image);
+      image.onerror = () => reject(new Error('Frame unavailable'));
+      image.src = url;
+    });
+  } finally { URL.revokeObjectURL(url); }
+}
+
 /** Autoplay clip one, then loop clip two while visible. Retain at most 18 decoded frames. */
 export function useHeroSequence(sectionRef: RefObject<HTMLElement | null>, canvasRef: RefObject<HTMLCanvasElement | null>, paused: boolean, reducedMotion: boolean) {
   const pausedRef = useRef(paused);
@@ -17,7 +38,7 @@ export function useHeroSequence(sectionRef: RefObject<HTMLElement | null>, canva
       section.style.setProperty('--journey', '0');
       return;
     }
-    const cache = new Map<string, ImageBitmap>();
+    const cache = new Map<string, FrameImage>();
     const pending = new Set<string>();
     const failed = new Set<string>();
     const abort = new AbortController();
@@ -30,6 +51,7 @@ export function useHeroSequence(sectionRef: RefObject<HTMLElement | null>, canva
     let loopTime = 0;
     let previousTime = 0;
     let lastPaint = '';
+    let started = false;
     let width = 0;
     let height = 0;
     let decodeWidth = window.innerWidth < 700 ? 720 : 1280;
@@ -44,23 +66,24 @@ export function useHeroSequence(sectionRef: RefObject<HTMLElement | null>, canva
       pending.add(key);
       fetch(key, { signal: abort.signal })
         .then(response => { if (!response.ok) throw new Error('Frame unavailable'); return response.blob(); })
-        .then(blob => createImageBitmap(blob, { resizeWidth: decodeWidth, resizeQuality: 'medium' }))
+        .then(blob => decodeHeroFrame(blob, decodeWidth))
         .then(bitmap => {
-          if (disposed) { bitmap.close(); return; }
+          if (disposed) { releaseFrame(bitmap); return; }
           cache.set(key, bitmap);
           while (cache.size > 18) {
             const oldest = cache.keys().next().value!;
-            cache.get(oldest)?.close(); cache.delete(oldest);
+            releaseFrame(cache.get(oldest)!); cache.delete(oldest);
           }
-          lastPaint = '';
         })
         .catch(() => { if (!disposed) failed.add(key); })
         .finally(() => pending.delete(key));
     };
-    const draw = (bitmap: ImageBitmap, opacity: number) => {
-      const ratio = Math.max(width / bitmap.width, height / bitmap.height);
-      const w = bitmap.width * ratio;
-      const h = bitmap.height * ratio;
+    const draw = (bitmap: FrameImage, opacity: number) => {
+      const sourceWidth = 'naturalWidth' in bitmap ? bitmap.naturalWidth : bitmap.width;
+      const sourceHeight = 'naturalHeight' in bitmap ? bitmap.naturalHeight : bitmap.height;
+      const ratio = Math.max(width / sourceWidth, height / sourceHeight);
+      const w = sourceWidth * ratio;
+      const h = sourceHeight * ratio;
       context.globalAlpha = opacity;
       context.drawImage(bitmap, (width - w) / 2, (height - h) / 2, w, h);
     };
@@ -79,7 +102,7 @@ export function useHeroSequence(sectionRef: RefObject<HTMLElement | null>, canva
       previousTime = now;
       {
         if (!pausedRef.current) {
-          if (lastPaint) elapsed += delta;
+          if (started) elapsed += delta;
           paintedProgress = clamp(elapsed / 6000);
           if (paintedProgress >= 0.82) loopTime += delta;
           else loopTime = 0;
@@ -108,6 +131,7 @@ export function useHeroSequence(sectionRef: RefObject<HTMLElement | null>, canva
           canvas.dataset.clip = blend === 1 && second ? 'second' : 'first';
           canvas.dataset.frame = String(blend === 1 ? secondFrame : firstFrame);
           lastPaint = paintKey;
+          started = true;
         }
         if (lastStyleProgress !== paintedProgress) {
           section.style.setProperty('--journey', String(paintedProgress));
@@ -127,14 +151,14 @@ export function useHeroSequence(sectionRef: RefObject<HTMLElement | null>, canva
     const observer = new IntersectionObserver(([entry]) => {
       visible = entry.isIntersecting;
       if (visible) resume();
-      else { cancelAnimationFrame(request); request = 0; elapsed = 0; loopTime = 0; lastPaint = ''; }
+      else { cancelAnimationFrame(request); request = 0; elapsed = 0; loopTime = 0; lastPaint = ''; started = false; }
     });
     const visibility = () => {
       if (document.hidden) { cancelAnimationFrame(request); request = 0; }
       else resume();
     };
     const resize = new ResizeObserver(measure);
-    resize.observe(canvas.parentElement!); observer.observe(canvas);
+    resize.observe(canvas.parentElement!); observer.observe(section);
     document.addEventListener('visibilitychange', visibility);
     measure(); resume();
     return () => {
@@ -142,7 +166,7 @@ export function useHeroSequence(sectionRef: RefObject<HTMLElement | null>, canva
       abort.abort(); cancelAnimationFrame(request);
       observer.disconnect(); resize.disconnect();
       document.removeEventListener('visibilitychange', visibility);
-      cache.forEach(bitmap => bitmap.close()); cache.clear();
+      cache.forEach(releaseFrame); cache.clear();
     };
   }, [sectionRef, canvasRef, reducedMotion]);
 }

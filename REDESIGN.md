@@ -23,6 +23,8 @@ Vite 6.4.3 rejects Windows development-server paths containing `~`, including th
 - Returning to the hero after scrolling away replays the first sequence and resets the second loop. Scroll remains native; there is no wheel/touch interception.
 - A pause/resume control freezes animation. Reduced-motion preference uses the still horizon. The hero occupies one screen and never requires a scroll trigger.
 - Bitmap decoding is limited to 18 cached frames, with smaller decoded images on phones. Work pauses when offscreen or when the tab is hidden. Failed frame requests leave the last frame/still visible.
+- Mobile browsers that do not support bitmap decoding or its resize options use the regular image decoder. Playback begins as soon as the first frame is drawn, with no tap or scroll required. Loading more frames does not reset the playback clock.
+- Regression check: `node scripts/test-hero-decoder.cjs` exercises both decoder fallbacks and phone-size autoplay, pause/resume, looping, and cleanup without user interaction.
 
 `src/hooks/useHeroSequence.ts` owns timing, loading and cleanup; `Hero.tsx` owns accessible copy and controls. `LandingSections.tsx` renders the remaining page from existing project data. Theme selection was removed from this landing page to match the supplied dark references.
 
