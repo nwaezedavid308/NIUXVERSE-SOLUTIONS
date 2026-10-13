@@ -33,7 +33,7 @@ export const FounderSection: React.FC<FounderSectionProps> = ({ onOpenRsvp }) =>
               <div className="rounded-2xl border border-[#0065E1]/30 overflow-hidden">
                 <img
                   src={davidImages[activeImage]}
-                  alt="Nwaeze David - The King of Intelligence"
+                  alt="Nwaeze David - Building the Niuxverse"
                   className="w-full h-[400px] sm:h-[500px] object-cover object-top"
                 />
               </div>
@@ -57,7 +57,7 @@ export const FounderSection: React.FC<FounderSectionProps> = ({ onOpenRsvp }) =>
             <div className="mt-6 rounded-xl border border-[#0065E1]/20 bg-[#051b44]/30 p-5">
               <span className="text-xs text-slate-500 uppercase tracking-wider block mb-1">Founder & Architect</span>
               <h3 className="font-display font-bold text-xl text-white tracking-tight">Nwaeze David</h3>
-              <p className="text-[#0065E1] font-medium text-sm mt-1">"The King of Intelligence"</p>
+              <p className="text-[#0065E1] font-medium text-sm mt-1">Building the Niuxverse</p>
             </div>
           </motion.div>
 
@@ -73,13 +73,13 @@ export const FounderSection: React.FC<FounderSectionProps> = ({ onOpenRsvp }) =>
               <span>The Vision</span>
             </div>
             <h2 className="font-display font-bold text-4xl sm:text-5xl text-white tracking-tight mb-3">
-              Why "The King of Intelligence"?
+              Building the Niuxverse
             </h2>
             <p className="text-[#0065E1] font-medium mb-6">Futuristic Technology & Human Connection</p>
 
             <div className="space-y-4 text-slate-400 mb-8">
               <p>The Niuxverse is a community of changemakers, thinkers, and builders who leverage the power of technology to solve problems and impact lives. It's about understanding how new tools shape our lives, jobs, emotions, friendships and how we can use them to help people.</p>
-              <p>For Nwaeze David, being "The King of Intelligence" means having wisdom, empathy, and clarity: staying true to our human values and using future tech to do real good.</p>
+              <p>For Nwaeze David, building the Niuxverse means combining wisdom, empathy, and clarity: staying true to our human values and using future tech to do real good.</p>
             </div>
 
             <div className="mb-8">

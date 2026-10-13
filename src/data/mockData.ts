@@ -12,7 +12,7 @@ export const SHOW_EPISODES: Episode[] = [
       { name: 'Mr Ifeanyi Nwakpoke', role: 'Writer' },
       { name: 'Blessing Egbe', role: 'AI ethics and Governance expert' },
     ],
-    moderator: 'King of Intelligence',
+    moderator: 'Nwaeze David',
     eventDate: '4th of October 2026',
     category: 'Human Condition',
     duration: 'Live Session',
@@ -21,7 +21,7 @@ export const SHOW_EPISODES: Episode[] = [
     isComingSoon: false,
     image: '/event-flyer.jpg',
     description:
-      'A special live session moderated by the King of Intelligence, exploring what truly defines our humanity as technology evolves. Featuring writer Mr Ifeanyi Nwakpoke and AI ethics and Governance expert Blessing Egbe.',
+      'A special live session moderated by Nwaeze David, exploring what truly defines our humanity as technology evolves. Featuring writer Mr Ifeanyi Nwakpoke and AI ethics and Governance expert Blessing Egbe.',
     keyQuestions: [
       'What truly defines the human experience in an age of AI?',
       'Can technology ever replicate our emotions and empathy?',
@@ -233,7 +233,7 @@ export const ACADEMY_COURSES: AcademyCourse[] = [
       { name: 'Mr Ifeanyi Nwakpoke', role: 'Writer' },
       { name: 'Blessing Egbe', role: 'AI Ethics & Governance Expert' },
     ],
-    moderator: 'King of Intelligence',
+    moderator: 'Nwaeze David',
     eventDate: 'Sunday, 4th of October 2026',
     modules: [
       'What makes us human: feelings, empathy, and lived experience',
@@ -283,8 +283,8 @@ export const UPCOMING_IMPACT_TALKS: ImpactSession[] = [
     date: 'Sunday, 4th of October 2026',
     topic: 'What Makes Us Human?',
     format: 'Live Community Event & Broadcast',
-    host: 'King of Intelligence',
-    moderator: 'King of Intelligence',
+    host: 'Nwaeze David',
+    moderator: 'Nwaeze David',
     speakers: [
       { name: 'Mr Ifeanyi Nwakpoke', role: 'Writer' },
       { name: 'Blessing Egbe', role: 'AI ethics and Governance expert' },
@@ -299,7 +299,7 @@ export const UPCOMING_IMPACT_TALKS: ImpactSession[] = [
     date: 'To be announced',
     topic: 'Modern Tech & Human Emotion: Building Strong Relationships',
     format: 'Google Meet Discussion',
-    host: 'Nwaeze David (The King of Intelligence)',
+    host: 'Nwaeze David (Building the Niuxverse)',
     guest: 'Bella (Culture & Community)',
     spotsLeft: 0,
     isComingSoon: true,
