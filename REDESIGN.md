@@ -26,7 +26,7 @@ Vite 6.4.3 rejects Windows development-server paths containing `~`, including th
 - Mobile browsers that do not support bitmap decoding or its resize options use the regular image decoder. Playback begins as soon as the first frame is drawn, with no tap or scroll required. Loading more frames does not reset the playback clock.
 - Regression check: `node scripts/test-hero-decoder.cjs` exercises both decoder fallbacks and phone-size autoplay, pause/resume, looping, and cleanup without user interaction.
 
-`src/hooks/useHeroSequence.ts` owns timing, loading and cleanup; `Hero.tsx` owns accessible copy and controls. `LandingSections.tsx` renders the remaining page from existing project data. Theme selection was removed from this landing page to match the supplied dark references.
+`src/hooks/useHeroSequence.ts` owns timing, loading and cleanup; `Hero.tsx` owns accessible copy, controls, and canvas rendering. `LandingSections.tsx` renders the remaining page from existing project data. High-contrast light and dark mode toggling is accessible in the header and mobile navigation. The founder section presents the multi-perspective portrait switcher from the profile directory.
 
 ## Content actions
 
